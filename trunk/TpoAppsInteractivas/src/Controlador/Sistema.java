@@ -54,7 +54,7 @@ public class Sistema {
 		}
 		return null;
 	}
-	public altaClienteindustrial(){
+//	public altaClienteindustrial(){
 		
-	}
+//	}
 }
