@@ -208,6 +208,7 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 		if(jlCliente == null) {
 			jlCliente = new JLabel();
 			jlCliente.setText("Cliente");
+			jlCliente.setEnabled(false);
 		}
 		return jlCliente;
 	}
@@ -219,6 +220,7 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 							new String[] { "Osvaldo, Pugliese", "Alfredo, Fernandez" });
 			jcbCliente = new JComboBox();
 			jcbCliente.setModel(jcbClienteModel);
+			jcbCliente.setEnabled(false);
 		}
 		return jcbCliente;
 	}
