@@ -1,5 +1,10 @@
 package Vista;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -15,6 +20,9 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import Vista.MenuPrincipal_vw;
+
+import Controlador.Sistema;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -29,6 +37,10 @@ import javax.swing.SwingUtilities;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class SelectCliente_vw extends javax.swing.JFrame {
+	
+	private Sistema sistema;
+	private ClienteResidencial_vw pClienteResidencial;
+	
 	private JLabel jlSeleccion;
 	private ButtonGroup bgTipoAccion;
 	private JButton jbAceptar;
@@ -46,7 +58,7 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				SelectCliente_vw inst = new SelectCliente_vw();
@@ -54,11 +66,14 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 				inst.setVisible(true);
 			}
 		});
-	}
+	}*/
 	
 	public SelectCliente_vw() {
 		super();
 		initGUI();
+		addAcciones();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 	
 	private void initGUI() {
@@ -66,6 +81,15 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 			GroupLayout thisLayout = new GroupLayout((JComponent)getContentPane());
 			getContentPane().setLayout(thisLayout);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			
+			//Metodo para capturar el evento de salida y volver a instanciar el sistema
+			addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+				new MenuPrincipal_vw(sistema);
+				}
+			});
+			
+			
 			this.setTitle("Seleccion de Cliente");
 			{
 				jlSeleccion = new JLabel();
@@ -241,4 +265,21 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 		return jbAceptar;
 	}
 
+	private void addAcciones(){
+		jbAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(jrbResidencial.isSelected()){
+					if(jrbAlta.isSelected()){
+						if(pClienteResidencial == null){
+							dispose();
+							pClienteResidencial = new ClienteResidencial_vw();
+						}
+					}
+				}
+				
+			}
+		});
+		
+	}
+	
 }

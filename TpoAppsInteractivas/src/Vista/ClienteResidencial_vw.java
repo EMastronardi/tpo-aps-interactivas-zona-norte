@@ -1,6 +1,11 @@
 package Vista;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -12,6 +17,10 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+
+
+import Vista.MenuPrincipal_vw;
+import Controlador.Sistema;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -26,6 +35,9 @@ import javax.swing.SwingUtilities;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class ClienteResidencial_vw extends javax.swing.JFrame {
+	
+	private Sistema sistema = null;
+	
 	private JLabel jlNombre;
 	private JLabel jlDepto;
 	private JButton jbCancelar;
@@ -48,11 +60,11 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 	private JLabel jlCalle;
 	private JLabel jlApellido;
 	private JLabel jlNroCliente;
-
+	
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				ClienteResidencial_vw inst = new ClienteResidencial_vw();
@@ -60,11 +72,13 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 				inst.setVisible(true);
 			}
 		});
-	}
+	}*/
 	
 	public ClienteResidencial_vw() {
 		super();
 		initGUI();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 	
 	private void initGUI() {
@@ -72,6 +86,15 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 			GroupLayout thisLayout = new GroupLayout((JComponent)getContentPane());
 			getContentPane().setLayout(thisLayout);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			
+			//Metodo para capturar el evento de salida y volver a instanciar el sistema
+			addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					dispose();
+					new MenuPrincipal_vw(sistema);
+				}
+			});
+			
 			this.setTitle("Cliente Residencial");
 			{
 				jlNombre = new JLabel();
@@ -261,6 +284,17 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	private void addAcciones(){
+		jbAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(jtApellido.getText() != null){
+					
+				}
+				
+			}
+		});
 	}
 
 }
