@@ -3,6 +3,7 @@ package Controlador;
 import java.util.*;
 
 import Modelo.Cliente;
+import Modelo.ElementoCobrable;
 import Modelo.Industrial;
 import Modelo.Residencial;
 
@@ -10,8 +11,11 @@ import Modelo.Residencial;
 public class Sistema {
 	static private Sistema instancia;
 	private ArrayList<Cliente> clientes;
+	private Collection<ElementoCobrable> cobrables;
 	
+	private static int idCliente;
 	private Sistema() {
+		idCliente = 0;
 		clientes = new ArrayList<Cliente>();
 	}
 	static public Sistema getInstance(){
@@ -43,6 +47,13 @@ public class Sistema {
 		}
 		return null;
 	}
+
+	public void RegistrarMedicion(int numeroCliente, Date fecha, float valor){
+		Cliente cli = getCliente(numeroCliente, null, null, null, null, null, null, null);
+		cli.cargarMedicion(valor, fecha);
+
+	}
+
 	
 	public boolean altaClienteResidencial(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
@@ -116,6 +127,7 @@ public class Sistema {
 		}
 		return false;
 	}
+
 //	public altaClienteindustrial(){
 		
 //	}
