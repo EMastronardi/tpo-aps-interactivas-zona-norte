@@ -76,6 +76,11 @@ public class Cliente {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
+	public void cargarMedicion(float valor, Date fecha){
+		
+		Medicion med = new Medicion(fecha, valor);
+		this.mediciones.add(med);
+	}
 	public  String getIsA(){
 		return this.isA;
 	}
