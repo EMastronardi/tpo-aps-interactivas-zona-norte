@@ -76,5 +76,8 @@ public class Cliente {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
+	public  String getIsA(){
+		return this.isA;
+	}
 	
 }

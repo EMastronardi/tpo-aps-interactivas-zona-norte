@@ -21,17 +21,6 @@ public class Sistema {
 		return instancia;
 	} 
 	
-	public boolean altaClienteResidencial(String calle, Integer altura,
-		Integer piso, String departamento, String codigoPostal,
-		String localidad, String provincia, String nombre, String apellido){
-		
-		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
-			Cliente aux = new Residencial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, nombre, apellido);
-			clientes.add(aux);
-			return true;
-		}
-		return false;
-	}
 	public Cliente getCliente(Integer nroCliente, String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia){
@@ -53,6 +42,79 @@ public class Sistema {
 			}			
 		}
 		return null;
+	}
+	
+	public boolean altaClienteResidencial(String calle, Integer altura,
+			Integer piso, String departamento, String codigoPostal,
+			String localidad, String provincia, String nombre, String apellido){
+			
+		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
+			Cliente aux = new Residencial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, nombre, apellido);
+			clientes.add(aux);
+			return true;
+		}
+		return false;
+	}
+		
+	
+	public Boolean bajaClienteResidencial(Integer nroCliente, String calle, Integer altura,
+			Integer piso, String departamento, String codigoPostal,
+			String localidad, String provincia, String nombre, String apellido){
+			
+		Cliente cliente = this.getCliente(nroCliente, calle, altura, piso, departamento, codigoPostal, localidad, provincia);
+		if(cliente != null){
+			clientes.remove(cliente);
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public Boolean modificarClienteResidencial(Integer nroCliente, String calle, Integer altura,
+			Integer piso, String departamento, String codigoPostal,
+			String localidad, String provincia, String nombre, String apellido){
+		
+		Residencial cliente = (Residencial) this.getCliente(nroCliente, null, null, null, null, null, null, null);
+		if(cliente != null){
+			cliente.setAltura(altura);
+			cliente.setCalle(calle);
+			cliente.setCodigoPostal(codigoPostal);
+			cliente.setDepartamento(departamento);
+			cliente.setLocalidad(localidad);
+			cliente.setPiso(piso);
+			cliente.setProvincia(provincia);
+			cliente.setNombre(nombre);
+			cliente.setApellido(apellido);
+			
+			return true;
+		}
+		return false;
+	}
+	
+	public Boolean altaClienteIndustrial(Integer nroCliente, String calle, Integer altura,
+			Integer piso, String departamento, String codigoPostal,
+			String localidad, String provincia, String razonSocial,
+			String cuit, String ingresosBrutos, String categoria) {
+		
+		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
+			Cliente aux = new Industrial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
+			clientes.add(aux);
+			return true;
+		}
+		return false;
+	}
+	
+	public Boolean bajaClienteIndustrial(Integer nroCliente, String calle, Integer altura,
+			Integer piso, String departamento, String codigoPostal,
+			String localidad, String provincia, String razonSocial,
+			String cuit, String ingresosBrutos, String categoria) {
+		
+		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
+			Cliente aux = new Industrial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
+			clientes.add(aux);
+			return true;
+		}
+		return false;
 	}
 //	public altaClienteindustrial(){
 		
