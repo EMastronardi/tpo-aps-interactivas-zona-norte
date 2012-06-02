@@ -47,5 +47,4 @@ public class Industrial extends Cliente{
 		Categoria = categoria;
 	}
 	
-	
 }
