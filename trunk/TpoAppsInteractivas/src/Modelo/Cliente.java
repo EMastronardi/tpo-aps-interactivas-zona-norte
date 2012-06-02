@@ -15,6 +15,8 @@ public class Cliente {
 	private String provincia;
 	private Collection<Medicion> mediciones;
 	protected String isA;
+	private static int idCliente = 0;	
+	
 	
 	public Cliente(Integer nroCliente, String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
@@ -28,6 +30,12 @@ public class Cliente {
 		this.localidad = localidad;
 		this.provincia = provincia;	
 	}
+	
+	public int getIdCliente(){
+		idCliente +=1;
+		return idCliente;
+	}
+	
 	public Integer getNroCliente() {
 		return nroCliente;
 	}
