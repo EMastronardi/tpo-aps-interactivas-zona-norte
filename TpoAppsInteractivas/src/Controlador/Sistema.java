@@ -13,11 +13,10 @@ public class Sistema {
 	private ArrayList<Cliente> clientes;
 	private Collection<ElementoCobrable> cobrables;
 	
-	private static int idCliente;
 	private Sistema() {
-		idCliente = 0;
 		clientes = new ArrayList<Cliente>();
 	}
+	
 	static public Sistema getInstance(){
 		if(instancia == null){
 			instancia = new Sistema();
