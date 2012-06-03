@@ -4,6 +4,7 @@ import java.util.*;
 
 import Modelo.Cliente;
 import Modelo.ElementoCobrable;
+import Modelo.Factura;
 import Modelo.Industrial;
 import Modelo.LiqIndustrialConTransporte;
 import Modelo.LiqIndustrialSinTransporte;
@@ -17,6 +18,7 @@ public class Sistema {
 	private ArrayList<Cliente> clientes;
 	private ArrayList<ElementoCobrable> cobrables;
 	private ArrayList<Liquidador> liquidadores;
+	private ArrayList<Factura> facturas;
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
@@ -204,6 +206,21 @@ public class Sistema {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean facturar(){
+		for (Cliente cli : clientes) {
+			try {
+				Factura fact = new Factura(cli.obtenerUltimoConsumo(),cli,liquidadores);
+				facturas.add(fact);
+			} catch (Exception e) {
+				return false;
+			}
+			
+			
+		}
+		return true;
+		
 	}
 //	public altaClienteindustrial(){
 		
