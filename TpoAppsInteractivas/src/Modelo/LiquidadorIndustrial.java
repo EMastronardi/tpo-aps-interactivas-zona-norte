@@ -11,7 +11,9 @@ public abstract class LiquidadorIndustrial extends Liquidador{
 	}
 	
 	abstract ArrayList<ItemFactura> liquidar();
-	abstract float calcularConsumo();
+	public float calcularConsumo(float consumoCliente){		
+		return consumoCliente * this.costoMetroCubico;
+	}
 
 	private static float getCostoMetroCubico() {
 		return costoMetroCubico;

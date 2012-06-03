@@ -7,12 +7,10 @@ import Modelo.ItemFactura;
 public abstract class Liquidador {
 	protected boolean estado;
 	protected ArrayList<ElementoCobrable> Cobrales;
-	protected float valorMetroCubico;
 	
 	public Liquidador(boolean estado, ArrayList<ElementoCobrable> cobrales) {
 		this.estado = estado;
 		Cobrales = cobrales;
-		this.valorMetroCubico = valorMetroCubico;
 	}
 	
 	public boolean isEstado() {
