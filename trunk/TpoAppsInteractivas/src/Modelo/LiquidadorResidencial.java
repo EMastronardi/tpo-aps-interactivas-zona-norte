@@ -9,7 +9,10 @@ public abstract class LiquidadorResidencial extends Liquidador{
 		this.costoMetroCubico = 1; 
 	}
 	
-	abstract ArrayList<ItemFactura> liquidar();
+	public float calcularConsumo(float consumoCliente){		
+		return consumoCliente * this.costoMetroCubico;
+	}
+	
 	abstract float calcularConsumo();
 
 	private static float getCostoMetroCubico() {
