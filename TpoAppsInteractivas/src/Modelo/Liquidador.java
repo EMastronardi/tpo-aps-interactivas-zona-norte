@@ -25,12 +25,7 @@ public abstract class Liquidador {
 	public void setCobrales(ArrayList<ElementoCobrable> cobrales) {
 		Cobrales = cobrales;
 	}
-	public float getValorMetroCubico() {
-		return valorMetroCubico;
-	}
-	public void setValorMetroCubico(float valorMetroCubico) {
-		this.valorMetroCubico = valorMetroCubico;
-	}
+	
 	abstract ArrayList<ItemFactura> liquidar();
 	abstract float calcularConsumo();
 }
