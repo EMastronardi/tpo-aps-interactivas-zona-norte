@@ -5,9 +5,9 @@ import Modelo.ItemFactura;
 
 public final class LiqIndustrialConTransporte extends LiquidadorIndustrial {
 
-	public LiqIndustrialConTransporte(boolean estado, ArrayList<ElementoCobrable> cobrales, float valorMetroCubico) {
-		super(estado, cobrales, valorMetroCubico);
-		// TODO Auto-generated constructor stub
+	public LiqIndustrialConTransporte(boolean estado, ArrayList<ElementoCobrable> cobrales) {
+		super(estado, cobrales);
+
 	}
 	
 	public ArrayList<ItemFactura> liquidar() {
