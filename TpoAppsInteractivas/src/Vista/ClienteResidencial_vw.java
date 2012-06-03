@@ -1,4 +1,5 @@
 package Vista;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
@@ -17,8 +19,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-
-
+import Util.Textos;
+import Vista.PopUp_vw;
 import Vista.MenuPrincipal_vw;
 import Controlador.Sistema;
 
@@ -287,12 +289,36 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 	}
 	
 	private void addAcciones(){
+		
 		jbAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(jtApellido.getText() != null){
+				if(jtApellido.getText() != null && jtNombre.getText() != null && jtCalle.getText() != null &&
+						jtAltura.getText() != null && jtPiso.getText() != null && jtDepto.getText() != null &&
+						jtCP.getText() != null && jtProvincia.getText() != null && jtLocalidad.getText() != null){
 					
+					if(sistema.altaClienteResidencial(jtCalle.getText(), Integer.parseInt(jtAltura.getText()), Integer.parseInt(jtPiso.getText()), jtDepto.getText(), jtCP.getText(), jtLocalidad.getText(), jtProvincia.getText(), jtNombre.getText(), jtApellido.getText())){
+						JOptionPane.showMessageDialog(new PopUp_vw(), 
+								Textos.ALTA_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
+						//Vuelvo al menu principal
+						dispose();
+						new MenuPrincipal_vw(sistema);
+					}
+					else{
+						JOptionPane.showMessageDialog(new PopUp_vw(), 
+								Textos.ALTA_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+					}
 				}
-				
+				else{
+					JOptionPane.showMessageDialog(new PopUp_vw(), 
+							Textos.FALTANTES, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+				}	
+			}
+		});
+		
+		jbCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new MenuPrincipal_vw(sistema);
 			}
 		});
 	}
