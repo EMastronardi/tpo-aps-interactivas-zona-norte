@@ -4,7 +4,7 @@ import java.util.*;
 
 import Modelo.Medicion;
 
-public class Cliente {
+public abstract class Cliente {
 	private Integer nroCliente;
 	private String calle;
 	private Integer altura;
@@ -15,27 +15,27 @@ public class Cliente {
 	private String provincia;
 	private Collection<Medicion> mediciones;
 	protected String isA;
-	private static int idCliente = 0;	
+	private static int nroProximoCliente = 0;	
 	
 	
-	public Cliente(Integer nroCliente, String calle, Integer altura,
+	public Cliente(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia) {
-		this.nroCliente = nroCliente;
 		this.calle = calle;
 		this.altura = altura;
 		this.piso = piso;
 		this.departamento = departamento;
 		this.codigoPostal = codigoPostal;
 		this.localidad = localidad;
-		this.provincia = provincia;	
+		this.provincia = provincia;
+		this.nroCliente = this.generarIdCliente();
 	}
 	
-	public int getIdCliente(){
-		idCliente +=1;
-		return idCliente;
+	public static int generarIdCliente(){
+		nroProximoCliente +=1;
+		return nroProximoCliente;
 	}
-	
+
 	public Integer getNroCliente() {
 		return nroCliente;
 	}
