@@ -1,5 +1,7 @@
 package Modelo;
 
+import Vista.ElementoCobrableView;
+
 public class ElementoCobrable {
 	private String nombre;
 	private float valor;

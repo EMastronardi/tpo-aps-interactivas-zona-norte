@@ -29,7 +29,6 @@ public class Sistema {
 		this.generarElementosCobrables();
 		this.generarLiquidadores();
 		
-		
 	}
 
 	private void generarElementosCobrables() {
@@ -51,7 +50,7 @@ public class Sistema {
 		return instancia;
 	} 
 	
-	public void generarLiquidadores(){
+	private void generarLiquidadores(){
 		//generacion de instancias iniciales de liquidadores
 		ArrayList<ElementoCobrable> elementos = new ArrayList<>();
 		elementos.add(this.buscarElementoPorNombre("IVA Consumidor final"));

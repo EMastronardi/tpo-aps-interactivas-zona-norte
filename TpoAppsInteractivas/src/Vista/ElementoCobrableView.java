@@ -1,4 +1,4 @@
-package Modelo;
+package Vista;
 
 public class ElementoCobrableView {
 	private String nombre;

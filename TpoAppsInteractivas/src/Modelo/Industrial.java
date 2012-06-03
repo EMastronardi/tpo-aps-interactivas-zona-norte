@@ -19,7 +19,7 @@ public class Industrial extends Cliente{
 		this.cuit = cuit;
 		this.ingresosBrutos = ingresosBrutos;
 		Categoria = categoria;
-		super.isA="industrial";
+		super.setIsA("industrial");
 	}
 	
 	public String getRazonSocial() {

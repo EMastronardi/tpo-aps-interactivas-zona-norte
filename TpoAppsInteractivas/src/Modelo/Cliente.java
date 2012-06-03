@@ -14,10 +14,14 @@ public abstract class Cliente {
 	private String localidad;
 	private String provincia;
 	private ArrayList<Medicion> mediciones;
-	protected String isA;
+	private String isA;
 	private static int nroProximoCliente = 0;	
 	
 	
+	public void setIsA(String isA) {
+		this.isA = isA;
+	}
+
 	public Cliente(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia) {

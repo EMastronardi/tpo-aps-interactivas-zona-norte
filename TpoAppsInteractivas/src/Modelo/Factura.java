@@ -12,9 +12,10 @@ public class Factura {
 	private float valorTotal;
 	private ArrayList<ItemFactura> Items;
 	
-	public Factura(float metrosCubicosConsumidos, Cliente cliente) {
+	public Factura(float metrosCubicosConsumidos, Cliente cliente, ArrayList<Liquidador> liquidadores) {
 		this.metrosCubicosConsumidos = metrosCubicosConsumidos;
 		this.cliente = cliente;
+		this.Items = this.generarFactura(this.cliente, liquidadores);
 	}
 	
 	public Integer getNroFactura() {
@@ -53,4 +54,20 @@ public class Factura {
 	public void setItems(ArrayList<ItemFactura> items) {
 		Items = items;
 	}
+	private ArrayList<ItemFactura> generarFactura(Cliente cli, ArrayList<Liquidador> liquidadores ){
+		
+		boolean seguir = true;
+		int i = 0;
+		ArrayList<ItemFactura> iFact = null;
+		while(seguir){
+			
+			iFact = liquidadores.get(i).liquidar(cli.getIsA(), cli.obtenerUltimoConsumo());
+			if(iFact != null){
+				seguir = false;
+				
+			}
+		}
+		return iFact;
+	}
 }
+

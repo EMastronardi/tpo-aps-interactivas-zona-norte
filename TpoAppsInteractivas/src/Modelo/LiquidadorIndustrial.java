@@ -10,7 +10,7 @@ public abstract class LiquidadorIndustrial extends Liquidador{
 		this.costoMetroCubico = 1;
 	}
 	
-	abstract ArrayList<ItemFactura> liquidar();
+	abstract ArrayList<ItemFactura> liquidar(String tipoCliente, float consumo);
 	public float calcularConsumo(float consumoCliente){		
 		return consumoCliente * this.costoMetroCubico;
 	}

@@ -6,11 +6,11 @@ import Modelo.ItemFactura;
 
 public abstract class Liquidador {
 	protected boolean estado;
-	protected ArrayList<ElementoCobrable> Cobrales;
+	protected ArrayList<ElementoCobrable> cobrales;
 	
 	public Liquidador(boolean estado, ArrayList<ElementoCobrable> cobrales) {
 		this.estado = estado;
-		Cobrales = cobrales;
+		this.cobrales = cobrales;
 	}
 	
 	public boolean isEstado() {
@@ -20,12 +20,21 @@ public abstract class Liquidador {
 		this.estado = estado;
 	}
 	public ArrayList<ElementoCobrable> getCobrales() {
-		return Cobrales;
+		return cobrales;
 	}
 	public void setCobrales(ArrayList<ElementoCobrable> cobrales) {
-		Cobrales = cobrales;
+		this.cobrales = cobrales;
+	}
+	protected ElementoCobrable getElementoCobrablePorNombre(String nombre){
+		for (ElementoCobrable elem : cobrales) {
+			if(elem.getNombre()== nombre){
+				return elem;
+			}
+		}
+		
+		return null;
 	}
 	
-	abstract ArrayList<ItemFactura> liquidar();
-	abstract float calcularConsumo();
+	abstract ArrayList<ItemFactura> liquidar(String tipoCliente, float consumo);
+	abstract float calcularConsumo(float consumoCliente);
 }
