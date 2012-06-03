@@ -13,7 +13,7 @@ public abstract class Cliente {
 	private String codigoPostal;
 	private String localidad;
 	private String provincia;
-	private Collection<Medicion> mediciones;
+	private ArrayList<Medicion> mediciones;
 	protected String isA;
 	private static int nroProximoCliente = 0;	
 	
@@ -91,6 +91,12 @@ public abstract class Cliente {
 	}
 	public  String getIsA(){
 		return this.isA;
+	}
+	public float obtenerUltimoConsumo(){
+		Medicion ultima = mediciones.get(mediciones.size()-1);
+		Medicion anterior = mediciones.get(mediciones.size()-2);
+		float consumo = ultima.getValor() - anterior.getValor();
+		return  consumo;
 	}
 	
 }
