@@ -5,16 +5,19 @@ import java.util.*;
 import Modelo.Cliente;
 import Modelo.ElementoCobrable;
 import Modelo.Industrial;
+import Modelo.LiqResidencialSinSubsidio;
 import Modelo.Residencial;
-
+import Modelo.Liquidador;
 
 public class Sistema {
 	static private Sistema instancia;
 	private ArrayList<Cliente> clientes;
-	private Collection<ElementoCobrable> cobrables;
+	private ArrayList<ElementoCobrable> cobrables;
+	private ArrayList<Liquidador> Liquidadores;
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
+		this.generarLiquidadores();
 	}
 	
 	static public Sistema getInstance(){
@@ -23,6 +26,13 @@ public class Sistema {
 		}
 		return instancia;
 	} 
+	
+	public void generarLiquidadores(){
+		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(false, cobrables, 0);
+		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(false, cobrables, 0);
+		
+		
+	}
 	
 	public Cliente getCliente(Integer nroCliente, String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
