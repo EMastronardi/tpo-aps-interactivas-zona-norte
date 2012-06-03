@@ -20,9 +20,30 @@ public class Sistema {
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
-		this.generarLiquidadores();
+		this.cargarDatosIniciales();
+		
 	}
 	
+	private void cargarDatosIniciales() {
+		
+		this.generarElementosCobrables();
+		this.generarLiquidadores();
+		
+		
+	}
+
+	private void generarElementosCobrables() {
+		//elementos cobrables iniciales
+		cobrables.add(new ElementoCobrable("IVA Consumidor final", (float) 0.21));
+		cobrables.add(new ElementoCobrable("IVA Resp. Inscripto", (float) 0.21));
+		cobrables.add(new ElementoCobrable("Contribuciones Municipales", (float) 0.05));
+		cobrables.add(new ElementoCobrable("Ingresos Brutos", (float) 0.03));
+		cobrables.add(new ElementoCobrable("Transporte", (float) 0.03));
+		cobrables.add(new ElementoCobrable("Subsidio", (float) 0.05));
+		
+		
+	}
+
 	static public Sistema getInstance(){
 		if(instancia == null){
 			instancia = new Sistema();
@@ -31,10 +52,20 @@ public class Sistema {
 	} 
 	
 	public void generarLiquidadores(){
-		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(false, cobrables, 0);
-		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(false, cobrables, 0);
-		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(false, cobrables, 0);
-		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(false, cobrables, 0);
+		//generacion de instancias iniciales de liquidadores
+		ArrayList<ElementoCobrable> elementos = new ArrayList<>();
+		elementos.add(this.buscarElementoPorNombre("IVA Consumidor final"));
+		elementos.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
+		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(false, elementos);
+		elementos.add(this.buscarElementoPorNombre("Subsidio"));
+		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(false, elementos);
+		elementos.clear();
+		elementos.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
+		elementos.add(this.buscarElementoPorNombre("Ingresos Brutos"));
+		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(false, elementos);
+		elementos.add(this.buscarElementoPorNombre("Transporte"));
+		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(false, elementos);
+		
 		liquidadores.add(residencialSinSubSidio);
 		liquidadores.add(residencialConSubSidio);
 		liquidadores.add(industrialConTrasporte);
@@ -60,6 +91,14 @@ public class Sistema {
 					return clieAux;
 				}
 			}			
+		}
+		return null;
+	}
+	public ElementoCobrable buscarElementoPorNombre(String nombre){
+		for (ElementoCobrable elem : cobrables) {
+			if(elem.getNombre() == nombre){
+				return elem;
+			}
 		}
 		return null;
 	}
@@ -171,3 +210,4 @@ public class Sistema {
 		
 //	}
 }
+

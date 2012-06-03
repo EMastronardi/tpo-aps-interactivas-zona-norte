@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public final class LiqResidencialSinSubsidio extends LiquidadorResidencial {
 
 	public LiqResidencialSinSubsidio(boolean estado,
-			ArrayList<ElementoCobrable> cobrales, float valorMetroCubico) {
-		super(estado, cobrales, valorMetroCubico);
+			ArrayList<ElementoCobrable> cobrales) {
+		super(estado, cobrales);
 	}
 
 	public ArrayList<ItemFactura> liquidar() {

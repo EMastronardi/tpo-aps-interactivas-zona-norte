@@ -9,8 +9,7 @@ public abstract class Liquidador {
 	protected ArrayList<ElementoCobrable> Cobrales;
 	protected float valorMetroCubico;
 	
-	public Liquidador(boolean estado, ArrayList<ElementoCobrable> cobrales,
-			float valorMetroCubico) {
+	public Liquidador(boolean estado, ArrayList<ElementoCobrable> cobrales) {
 		this.estado = estado;
 		Cobrales = cobrales;
 		this.valorMetroCubico = valorMetroCubico;
