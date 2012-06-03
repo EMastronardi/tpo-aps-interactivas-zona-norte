@@ -5,6 +5,9 @@ import java.util.*;
 import Modelo.Cliente;
 import Modelo.ElementoCobrable;
 import Modelo.Industrial;
+import Modelo.LiqIndustrialConTransporte;
+import Modelo.LiqIndustrialSinTransporte;
+import Modelo.LiqResidencialConSubsidio;
 import Modelo.LiqResidencialSinSubsidio;
 import Modelo.Residencial;
 import Modelo.Liquidador;
@@ -13,7 +16,7 @@ public class Sistema {
 	static private Sistema instancia;
 	private ArrayList<Cliente> clientes;
 	private ArrayList<ElementoCobrable> cobrables;
-	private ArrayList<Liquidador> Liquidadores;
+	private ArrayList<Liquidador> liquidadores;
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
@@ -30,8 +33,12 @@ public class Sistema {
 	public void generarLiquidadores(){
 		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(false, cobrables, 0);
 		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(false, cobrables, 0);
-		
-		
+		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(false, cobrables, 0);
+		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(false, cobrables, 0);
+		liquidadores.add(residencialSinSubSidio);
+		liquidadores.add(residencialConSubSidio);
+		liquidadores.add(industrialConTrasporte);
+		liquidadores.add(industrialSinTransporte);
 	}
 	
 	public Cliente getCliente(Integer nroCliente, String calle, Integer altura,
@@ -129,14 +136,37 @@ public class Sistema {
 			String localidad, String provincia, String razonSocial,
 			String cuit, String ingresosBrutos, String categoria) {
 		
-		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
-			Cliente aux = new Industrial(calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
-			clientes.add(aux);
+		Cliente cliente = this.getCliente(nroCliente, calle, altura, piso, departamento, codigoPostal, localidad, provincia);
+		if(cliente != null){
+			clientes.remove(cliente);
 			return true;
 		}
 		return false;
 	}
-
+	
+	public Boolean modificarClienteIndustrial(Integer nroCliente, String calle, Integer altura,
+			Integer piso, String departamento, String codigoPostal,
+			String localidad, String provincia, String razonSocial,
+			String cuit, String ingresosBrutos, String categoria){
+		
+		Industrial cliente = (Industrial) this.getCliente(nroCliente, null, null, null, null, null, null, null);
+		if(cliente != null){
+			cliente.setAltura(altura);
+			cliente.setCalle(calle);
+			cliente.setCodigoPostal(codigoPostal);
+			cliente.setDepartamento(departamento);
+			cliente.setLocalidad(localidad);
+			cliente.setPiso(piso);
+			cliente.setProvincia(provincia);
+			cliente.setCategoria(categoria);
+			cliente.setCuit(cuit);
+			cliente.setRazonSocial(razonSocial);
+			cliente.setIngresosBrutos(ingresosBrutos);
+			
+			return true;
+		}
+		return false;
+	}
 //	public altaClienteindustrial(){
 		
 //	}
