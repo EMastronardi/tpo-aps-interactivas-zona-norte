@@ -59,7 +59,7 @@ public class Sistema {
 			String localidad, String provincia, String nombre, String apellido){
 			
 		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
-			Cliente aux = new Residencial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, nombre, apellido);
+			Cliente aux = new Residencial(calle, altura,piso, departamento, codigoPostal, localidad, provincia, nombre, apellido);
 			clientes.add(aux);
 			return true;
 		}
@@ -107,7 +107,7 @@ public class Sistema {
 			String cuit, String ingresosBrutos, String categoria) {
 		
 		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
-			Cliente aux = new Industrial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
+			Cliente aux = new Industrial(calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
 			clientes.add(aux);
 			return true;
 		}
@@ -120,7 +120,7 @@ public class Sistema {
 			String cuit, String ingresosBrutos, String categoria) {
 		
 		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
-			Cliente aux = new Industrial(clientes.size(),calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
+			Cliente aux = new Industrial(calle, altura,piso, departamento, codigoPostal, localidad, provincia, razonSocial, cuit, ingresosBrutos, categoria);
 			clientes.add(aux);
 			return true;
 		}

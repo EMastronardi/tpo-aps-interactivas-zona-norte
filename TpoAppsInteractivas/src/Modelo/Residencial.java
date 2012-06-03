@@ -5,14 +5,15 @@ public class Residencial extends Cliente{
 	private String apellido;
 	
 	
-	public Residencial(Integer nroCliente, String calle, Integer altura,
+	public Residencial(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia, String nombre, String apellido) {
-		super(nroCliente, calle, altura, piso, departamento, codigoPostal,
+		super(calle, altura, piso, departamento, codigoPostal,
 				localidad, provincia);
 		this.nombre = nombre;
 		this.apellido = apellido;
-		super.isA="residencial";	
+		super.isA="residencial";
+		
 	}
 	public String getNombre() {
 		return nombre;

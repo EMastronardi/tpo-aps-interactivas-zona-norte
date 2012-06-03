@@ -9,11 +9,11 @@ public class Industrial extends Cliente{
 	private String ingresosBrutos;
 	private String Categoria;
 	
-	public Industrial(Integer nroCliente, String calle, Integer altura,
+	public Industrial(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia, String razonSocial,
 			String cuit, String ingresosBrutos, String categoria) {
-		super(nroCliente, calle, altura, piso, departamento, codigoPostal,
+		super(calle, altura, piso, departamento, codigoPostal,
 				localidad, provincia);
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
