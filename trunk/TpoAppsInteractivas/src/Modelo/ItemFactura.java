@@ -6,8 +6,10 @@ public class ItemFactura {
 	private String nombre;
 	private float Valor;
 	
-	public ItemFactura() {
+	public ItemFactura(String nombre,float valor ) {
 		super();
+		this.nombre = nombre;
+		this.Valor = valor;
 	}
 
 	public String getNombre() {

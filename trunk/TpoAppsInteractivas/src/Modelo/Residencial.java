@@ -5,6 +5,7 @@ public class Residencial extends Cliente{
 	private String apellido;
 	
 	
+	
 	public Residencial(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia, String nombre, String apellido) {
@@ -12,7 +13,7 @@ public class Residencial extends Cliente{
 				localidad, provincia);
 		this.nombre = nombre;
 		this.apellido = apellido;
-		super.isA="residencial";
+		super.setIsA("residencial");
 		
 	}
 	public String getNombre() {
