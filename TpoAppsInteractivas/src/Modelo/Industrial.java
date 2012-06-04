@@ -46,5 +46,8 @@ public class Industrial extends Cliente{
 	public void setCategoria(String categoria) {
 		Categoria = categoria;
 	}
-	
+	public IndustrialView generarView(){
+		IndustrialView cli = new IndustrialView(nroCliente, calle, altura, piso, departamento, codigoPostal, localidad, provincia, isA, razonSocial, cuit, ingresosBrutos, Categoria);
+		return cli;
+	}
 }

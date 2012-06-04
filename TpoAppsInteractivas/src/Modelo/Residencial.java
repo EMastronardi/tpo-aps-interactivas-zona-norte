@@ -1,10 +1,9 @@
 package Modelo;
 
+
 public class Residencial extends Cliente{
 	private String nombre;
 	private String apellido;
-	
-	
 	
 	public Residencial(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
@@ -28,5 +27,8 @@ public class Residencial extends Cliente{
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
+	public ResidencialView generarView(){
+		ResidencialView cli = new ResidencialView(nroCliente, calle, altura, piso, departamento, codigoPostal, localidad, provincia, isA, nombre, apellido);
+		return cli;
+	}
 }

@@ -3,6 +3,8 @@ package Controlador;
 import java.util.*;
 
 import Modelo.Cliente;
+import Modelo.IndustrialView;
+import Modelo.ResidencialView;
 import Modelo.ElementoCobrable;
 import Modelo.Factura;
 import Modelo.Industrial;
@@ -12,6 +14,7 @@ import Modelo.LiqResidencialConSubsidio;
 import Modelo.LiqResidencialSinSubsidio;
 import Modelo.Residencial;
 import Modelo.Liquidador;
+
 
 public class Sistema {
 	static private Sistema instancia;
@@ -225,8 +228,28 @@ public class Sistema {
 		return true;
 		
 	}
-//	public altaClienteindustrial(){
-		
-//	}
+	
+	public ArrayList<ResidencialView> obtenerClientesResidencial(){
+		ArrayList<ResidencialView> cli = new ArrayList<ResidencialView>();
+		for(Cliente c : clientes){
+			if (c.getIsA().equals("residencial")){
+				Residencial r = (Residencial) c;
+				cli.add(r.generarView());
+			}
+		}
+		return cli;
+	}
+	
+	public ArrayList<IndustrialView> obtenerClientesIndustrial(){
+		ArrayList<IndustrialView> cli = new ArrayList<IndustrialView>();
+		for(Cliente c : clientes){
+			if (c.getIsA().equals("industrial")){
+				Industrial r = (Industrial) c;
+				cli.add(r.generarView());
+			}
+		}
+		return cli;
+	}
+
 }
 

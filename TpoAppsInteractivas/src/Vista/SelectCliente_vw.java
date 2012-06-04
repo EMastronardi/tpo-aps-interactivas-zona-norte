@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ComboBoxModel;
@@ -21,8 +22,9 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 import Vista.MenuPrincipal_vw;
-
 import Controlador.Sistema;
+import Modelo.IndustrialView;
+import Modelo.ResidencialView;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -58,15 +60,6 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
-/*	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				SelectCliente_vw inst = new SelectCliente_vw();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}*/
 	
 	public SelectCliente_vw(Sistema sistema) {
 		super();
@@ -242,7 +235,7 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 		if(jcbCliente == null) {
 			ComboBoxModel jcbClienteModel = 
 					new DefaultComboBoxModel(
-							new String[] { "Osvaldo, Pugliese", "Alfredo, Fernandez" });
+							new String[] { "", "" });
 			jcbCliente = new JComboBox();
 			jcbCliente.setModel(jcbClienteModel);
 			jcbCliente.setEnabled(false);
@@ -274,11 +267,21 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 					if(jrbAlta.isSelected()){
 						if(pClienteResidencial == null){
 							dispose();
-							pClienteResidencial = new ClienteResidencial_vw(sistema);
+							pClienteResidencial = new ClienteResidencial_vw(sistema,0,null);
+						}
+					}
+					else{
+						if(jrbModificacion.isSelected()){
+							dispose();
+							pClienteResidencial = new ClienteResidencial_vw(sistema,1,(ResidencialView)jcbCliente.getSelectedItem());
+						}
+						else{	
+							dispose();
+							pClienteResidencial = new ClienteResidencial_vw(sistema,2,(ResidencialView)jcbCliente.getSelectedItem());
 						}
 					}
 				}
-				
+				//hacer parte de industrial
 			}
 		});
 		
@@ -289,6 +292,93 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 			}
 		});
 		
+		jrbResidencial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(jrbAlta.isSelected()){
+					jcbCliente.setEnabled(false);
+					jlCliente.setEnabled(false);
+					jcbCliente.removeAllItems();
+				}
+				else{
+					if(jrbModificacion.isSelected() || jrbBaja.isSelected()){
+						jcbCliente.setEnabled(true);
+						jlCliente.setEnabled(true);
+						cargarResidenciales();
+					}
+				}
+			}
+		});
+		
+		jrbIndustrial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(jrbAlta.isSelected()){
+					jcbCliente.setEnabled(false);
+					jlCliente.setEnabled(false);
+					jcbCliente.removeAllItems();
+				}
+				else{
+					if(jrbModificacion.isSelected() || jrbBaja.isSelected()){
+						jcbCliente.setEnabled(true);
+						jlCliente.setEnabled(true);
+						cargarIndustriales();
+					}	
+				}
+			}
+		});
+		
+		jrbAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jcbCliente.setEnabled(false);
+				jlCliente.setEnabled(false);
+				jcbCliente.removeAllItems();
+			}
+		});
+		
+		jrbModificacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (jrbResidencial.isSelected()){
+					jcbCliente.setEnabled(true);
+					jlCliente.setEnabled(true);
+					cargarResidenciales();
+				}
+				else{
+					jcbCliente.setEnabled(true);
+					jlCliente.setEnabled(true);
+					cargarIndustriales();
+				}
+			}
+		});
+		
+		jrbBaja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (jrbResidencial.isSelected()){
+					jcbCliente.setEnabled(true);
+					jlCliente.setEnabled(true);
+					cargarResidenciales();
+				}
+				else{
+					jcbCliente.setEnabled(true);
+					jlCliente.setEnabled(true);
+					cargarIndustriales();
+				}
+			}
+		});
+		
 	}
 	
+	private void cargarResidenciales(){
+		jcbCliente.removeAllItems();
+		ArrayList<ResidencialView> residenciales = sistema.obtenerClientesResidencial();
+		for(ResidencialView r: residenciales){
+			jcbCliente.addItem(r);
+		}
+	}
+	
+	private void cargarIndustriales(){
+		jcbCliente.removeAllItems();
+		ArrayList<IndustrialView> industriales = sistema.obtenerClientesIndustrial();
+		for(IndustrialView i: industriales){
+			jcbCliente.addItem(i);
+		}
+	}
 }
