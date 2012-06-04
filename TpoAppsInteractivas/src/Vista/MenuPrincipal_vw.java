@@ -42,6 +42,7 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 	private JMenu JmTarifa;
 	private JMenu jmImpuesto;
 	private JMenu jmMedicion;
+	private JMenuItem jmiSalir;
 	private JMenu jmSalir;
 	private JMenuItem jmiGenerarFacturacion;
 	private JMenuItem jmiTarifas;
@@ -141,6 +142,11 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 					jmSalir = new JMenu();
 					jMenuPrincipal.add(jmSalir);
 					jmSalir.setText("Salir");
+					{
+						jmiSalir = new JMenuItem();
+						jmSalir.add(jmiSalir);
+						jmiSalir.setText("Salir del Sistema");
+					}
 				}
 			}
 			pack();
@@ -157,13 +163,13 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				if (pSelectCliente == null){
-					pSelectCliente = new SelectCliente_vw();
+					pSelectCliente = new SelectCliente_vw(sistema);
 				}
 			}
 		});
 		
 		
-		jmSalir.addActionListener(new ActionListener() {
+		jmiSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}

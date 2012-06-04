@@ -68,10 +68,11 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 		});
 	}*/
 	
-	public SelectCliente_vw() {
+	public SelectCliente_vw(Sistema sistema) {
 		super();
 		initGUI();
 		addAcciones();
+		this.sistema = sistema;
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -266,17 +267,25 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 	}
 
 	private void addAcciones(){
+		
 		jbAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(jrbResidencial.isSelected()){
 					if(jrbAlta.isSelected()){
 						if(pClienteResidencial == null){
 							dispose();
-							pClienteResidencial = new ClienteResidencial_vw();
+							pClienteResidencial = new ClienteResidencial_vw(sistema);
 						}
 					}
 				}
 				
+			}
+		});
+		
+		jbCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new MenuPrincipal_vw(sistema);
 			}
 		});
 		

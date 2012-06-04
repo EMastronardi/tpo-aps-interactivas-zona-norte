@@ -22,6 +22,9 @@ public class Sistema {
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
+		cobrables = new ArrayList<ElementoCobrable>();
+		liquidadores = new ArrayList<Liquidador>();
+		facturas = new ArrayList<Factura>();
 		this.cargarDatosIniciales();
 		
 	}
