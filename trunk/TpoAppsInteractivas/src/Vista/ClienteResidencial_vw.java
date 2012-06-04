@@ -76,9 +76,11 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 		});
 	}*/
 	
-	public ClienteResidencial_vw() {
+	public ClienteResidencial_vw(Sistema sistema) {
 		super();
 		initGUI();
+		this.sistema = sistema;
+		addAcciones();
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -292,9 +294,9 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 		
 		jbAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(jtApellido.getText() != null && jtNombre.getText() != null && jtCalle.getText() != null &&
-						jtAltura.getText() != null && jtPiso.getText() != null && jtDepto.getText() != null &&
-						jtCP.getText() != null && jtProvincia.getText() != null && jtLocalidad.getText() != null){
+				if(!jtApellido.getText().isEmpty()  && !jtNombre.getText().isEmpty() && !jtCalle.getText().isEmpty() &&
+						!jtAltura.getText().isEmpty() && !jtPiso.getText().isEmpty() && !jtDepto.getText().isEmpty() &&
+						!jtCP.getText().isEmpty() && !jtProvincia.getText().isEmpty() && !jtLocalidad.getText().isEmpty()){
 					
 					if(sistema.altaClienteResidencial(jtCalle.getText(), Integer.parseInt(jtAltura.getText()), Integer.parseInt(jtPiso.getText()), jtDepto.getText(), jtCP.getText(), jtLocalidad.getText(), jtProvincia.getText(), jtNombre.getText(), jtApellido.getText())){
 						JOptionPane.showMessageDialog(new PopUp_vw(), 

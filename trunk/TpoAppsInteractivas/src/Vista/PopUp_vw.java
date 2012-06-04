@@ -19,14 +19,14 @@ import javax.swing.WindowConstants;
 */
 public class PopUp_vw extends javax.swing.JFrame {
 
-	{
+	/*{
 		//Set Look & Feel
 		try {
 			javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 
 	/**
