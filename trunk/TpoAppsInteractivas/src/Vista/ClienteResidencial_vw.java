@@ -23,6 +23,7 @@ import Util.Textos;
 import Vista.PopUp_vw;
 import Vista.MenuPrincipal_vw;
 import Controlador.Sistema;
+import Modelo.ResidencialView;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -39,6 +40,8 @@ import Controlador.Sistema;
 public class ClienteResidencial_vw extends javax.swing.JFrame {
 	
 	private Sistema sistema = null;
+	private int operacion;
+	private ResidencialView cliente;
 	
 	private JLabel jlNombre;
 	private JLabel jlDepto;
@@ -66,20 +69,13 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
-	/*public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				ClienteResidencial_vw inst = new ClienteResidencial_vw();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}*/
 	
-	public ClienteResidencial_vw(Sistema sistema) {
+	public ClienteResidencial_vw(Sistema sistema, int op, ResidencialView cli) {
 		super();
 		initGUI();
 		this.sistema = sistema;
+		this.operacion = op;
+		this.cliente = cli;
 		addAcciones();
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -142,6 +138,8 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 			}
 			{
 				jtNroCliente = new JTextField();
+				jtNroCliente.setEnabled(false);
+				jtNroCliente.setEditable(false);
 			}
 			{
 				jbAceptar = new JButton();

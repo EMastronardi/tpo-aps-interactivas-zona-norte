@@ -5,16 +5,17 @@ import java.util.*;
 import Modelo.Medicion;
 
 public abstract class Cliente {
-	private Integer nroCliente;
-	private String calle;
-	private Integer altura;
-	private Integer piso;
-	private String departamento;
-	private String codigoPostal;
-	private String localidad;
-	private String provincia;
+	
+	protected Integer nroCliente;
+	protected String calle;
+	protected Integer altura;
+	protected Integer piso;
+	protected String departamento;
+	protected String codigoPostal;
+	protected String localidad;
+	protected String provincia;
 	private ArrayList<Medicion> mediciones;
-	private String isA;
+	protected String isA;
 	private static int nroProximoCliente = 0;	
 	
 	
@@ -35,7 +36,7 @@ public abstract class Cliente {
 		this.nroCliente = this.generarIdCliente();
 	}
 	
-	public static int generarIdCliente(){
+	private static int generarIdCliente(){
 		nroProximoCliente +=1;
 		return nroProximoCliente;
 	}
