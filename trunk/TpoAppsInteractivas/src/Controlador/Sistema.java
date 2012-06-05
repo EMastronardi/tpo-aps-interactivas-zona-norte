@@ -125,9 +125,17 @@ public class Sistema {
 		return null;
 	}
 
-	public void RegistrarMedicion(int numeroCliente, Date fecha, float valor){
+	public boolean RegistrarMedicion(int numeroCliente, Date fecha, float valor){
+		
 		Cliente cli = getCliente(numeroCliente, null, null, null, null, null, null, null);
-		cli.cargarMedicion(valor, fecha);
+		if (cli!=null){
+			if(cli.cargarMedicion(valor, fecha))
+				return true;
+			else 
+				return false;
+		}
+		else 
+			return false;
 
 	}
 
@@ -237,8 +245,7 @@ public class Sistema {
 			} catch (Exception e) {
 				return false;
 			}
-			
-			
+		
 		}
 		return true;
 		

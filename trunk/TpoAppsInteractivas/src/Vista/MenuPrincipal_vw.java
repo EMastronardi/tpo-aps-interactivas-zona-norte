@@ -32,7 +32,8 @@ import Vista.*;
 public class MenuPrincipal_vw extends javax.swing.JFrame {
 	
 	private Sistema sistema; 
-	private SelectCliente_vw pSelectCliente; 
+	private SelectCliente_vw pSelectCliente;
+	private Medicion_vw pMedicion;
 	
 	private JMenuBar jMenuPrincipal;
 	private JMenu jmFacturacion;
@@ -168,6 +169,14 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 			}
 		});
 		
+		jmiRegistrarMedicion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				if (pMedicion == null){
+					pMedicion = new Medicion_vw(sistema);
+				}
+			}
+		});
 		
 		jmiSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -21,6 +21,8 @@ public class Textos {
 	public final static String MODIFICACION_OK = "La modificaci�n se realiz� correctamente";
 	public final static String MODIFICACION_ERROR = "La modificaci�n no pudo llevarse a cabo";
 	
+	public final static String MEDICION_OK = "La medicion se grabo correctamente";
+	public final static String MEDICION_ERROR = "La medicion no se pudo grabar correctamente";
 	/*
 	public final static String USUARIO_VACIO = "El campo Usuario no puede estar vacio.";
 	public final static String PASSWORD_VACIO = "El campo Passowrd no puede estar vacio.";
