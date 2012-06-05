@@ -267,17 +267,24 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 					if(jrbAlta.isSelected()){
 						if(pClienteResidencial == null){
 							dispose();
-							pClienteResidencial = new ClienteResidencial_vw(sistema,0,null);
+							pClienteResidencial = new ClienteResidencial_vw(sistema,0);
 						}
 					}
 					else{
 						if(jrbModificacion.isSelected()){
-							dispose();
-							pClienteResidencial = new ClienteResidencial_vw(sistema,1,(ResidencialView)jcbCliente.getSelectedItem());
+							if(pClienteResidencial == null){
+								dispose();
+								pClienteResidencial = new ClienteResidencial_vw(sistema,1);
+							}
+							pClienteResidencial.cargarResidencial((ResidencialView)jcbCliente.getSelectedItem());
 						}
-						else{	
-							dispose();
-							pClienteResidencial = new ClienteResidencial_vw(sistema,2,(ResidencialView)jcbCliente.getSelectedItem());
+						else{
+							if(pClienteResidencial == null){
+								dispose();
+								pClienteResidencial = new ClienteResidencial_vw(sistema,2);
+							}
+							pClienteResidencial.cargarResidencial((ResidencialView)jcbCliente.getSelectedItem());
+							pClienteResidencial.inhabilitarCampos();
 						}
 					}
 				}

@@ -41,7 +41,6 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 	
 	private Sistema sistema = null;
 	private int operacion;
-	private ResidencialView cliente;
 	
 	private JLabel jlNombre;
 	private JLabel jlDepto;
@@ -70,12 +69,11 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 	* Auto-generated main method to display this JFrame
 	*/
 	
-	public ClienteResidencial_vw(Sistema sistema, int op, ResidencialView cli) {
+	public ClienteResidencial_vw(Sistema sistema, int op) {
 		super();
 		initGUI();
 		this.sistema = sistema;
 		this.operacion = op;
-		this.cliente = cli;
 		addAcciones();
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -139,7 +137,6 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 			{
 				jtNroCliente = new JTextField();
 				jtNroCliente.setEnabled(false);
-				jtNroCliente.setEditable(false);
 			}
 			{
 				jbAceptar = new JButton();
@@ -292,27 +289,65 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 		
 		jbAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!jtApellido.getText().isEmpty()  && !jtNombre.getText().isEmpty() && !jtCalle.getText().isEmpty() &&
-						!jtAltura.getText().isEmpty() && !jtPiso.getText().isEmpty() && !jtDepto.getText().isEmpty() &&
-						!jtCP.getText().isEmpty() && !jtProvincia.getText().isEmpty() && !jtLocalidad.getText().isEmpty()){
-					
-					if(sistema.altaClienteResidencial(jtCalle.getText(), Integer.parseInt(jtAltura.getText()), Integer.parseInt(jtPiso.getText()), jtDepto.getText(), jtCP.getText(), jtLocalidad.getText(), jtProvincia.getText(), jtNombre.getText(), jtApellido.getText())){
+				if(operacion==0){//Cliente nuevo
+					if(!jtApellido.getText().isEmpty()  && !jtNombre.getText().isEmpty() && !jtCalle.getText().isEmpty() &&
+							!jtAltura.getText().isEmpty() && !jtPiso.getText().isEmpty() && !jtDepto.getText().isEmpty() &&
+							!jtCP.getText().isEmpty() && !jtProvincia.getText().isEmpty() && !jtLocalidad.getText().isEmpty()){
+						
+						if(sistema.altaClienteResidencial(jtCalle.getText(), Integer.parseInt(jtAltura.getText()), Integer.parseInt(jtPiso.getText()), jtDepto.getText(), jtCP.getText(), jtLocalidad.getText(), jtProvincia.getText(), jtNombre.getText(), jtApellido.getText())){
+							JOptionPane.showMessageDialog(new PopUp_vw(), 
+									Textos.ALTA_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
+							//Vuelvo al menu principal
+							dispose();
+							new MenuPrincipal_vw(sistema);
+						}
+						else{
+							JOptionPane.showMessageDialog(new PopUp_vw(), 
+									Textos.ALTA_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+						}
+					}
+					else{
 						JOptionPane.showMessageDialog(new PopUp_vw(), 
-								Textos.ALTA_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
+								Textos.FALTANTES, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+					}
+				
+				}
+				else{
+					if(operacion == 1){//Modificacion
+						if(!jtApellido.getText().isEmpty()  && !jtNombre.getText().isEmpty() && !jtCalle.getText().isEmpty() &&
+								!jtAltura.getText().isEmpty() && !jtPiso.getText().isEmpty() && !jtDepto.getText().isEmpty() &&
+								!jtCP.getText().isEmpty() && !jtProvincia.getText().isEmpty() && !jtLocalidad.getText().isEmpty()){
+							
+							if(sistema.modificarClienteResidencial(Integer.parseInt(jtNroCliente.getText()), jtCalle.getText(), Integer.parseInt(jtAltura.getText()), Integer.parseInt(jtPiso.getText()), jtDepto.getText(), jtCP.getText(), jtLocalidad.getText(), jtProvincia.getText(), jtNombre.getText(), jtApellido.getText())){
+								JOptionPane.showMessageDialog(new PopUp_vw(), 
+										Textos.MODIFICACION_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
+								//Vuelvo al menu principal
+								dispose();
+								new MenuPrincipal_vw(sistema);
+							}
+							else{
+								JOptionPane.showMessageDialog(new PopUp_vw(), 
+										Textos.MODIFICACION_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+							}
+						}
+						else{
+							JOptionPane.showMessageDialog(new PopUp_vw(), 
+									Textos.FALTANTES, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+						}
+					}//Baja
+					if(sistema.bajaClienteResidencial(Integer.parseInt(jtNroCliente.getText()), null, null, null, null, null, null, null, null, null)){
+						JOptionPane.showMessageDialog(new PopUp_vw(), 
+								Textos.BAJA_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
 						//Vuelvo al menu principal
 						dispose();
 						new MenuPrincipal_vw(sistema);
 					}
 					else{
 						JOptionPane.showMessageDialog(new PopUp_vw(), 
-								Textos.ALTA_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+								Textos.BAJA_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
 					}
 				}
-				else{
-					JOptionPane.showMessageDialog(new PopUp_vw(), 
-							Textos.FALTANTES, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
-				}	
-			}
+			}	
 		});
 		
 		jbCancelar.addActionListener(new ActionListener() {
@@ -321,6 +356,40 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 				new MenuPrincipal_vw(sistema);
 			}
 		});
+	}
+	
+	public void cargarResidencial(ResidencialView r){
+		
+		jtNroCliente.setText(String.valueOf(r.getNroCliente()));
+		jtNombre.setText(r.getNombre());
+		jtApellido.setText(r.getApellido());
+		jtCalle.setText(r.getCalle());
+		jtAltura.setText(String.valueOf(r.getAltura()));
+		jtPiso.setText(String.valueOf(r.getPiso()));
+		jtDepto.setText(r.getDepartamento());
+		jtCP.setText(r.getCodigoPostal());
+		jtLocalidad.setText(r.getLocalidad());
+		jtProvincia.setText(r.getProvincia());
+		
+		if(operacion == 1)
+			jbAceptar.setText("Modificar");
+		else
+			jbAceptar.setText("Baja");	
+	}
+	
+	public void inhabilitarCampos(){
+		
+		jtNroCliente.setEnabled(false);
+		jtNombre.setEnabled(false);
+		jtApellido.setEnabled(false);
+		jtCalle.setEnabled(false);
+		jtAltura.setEnabled(false);
+		jtPiso.setEnabled(false);
+		jtDepto.setEnabled(false);
+		jtCP.setEnabled(false);
+		jtLocalidad.setEnabled(false);
+		jtProvincia.setEnabled(false);
+		
 	}
 
 }
