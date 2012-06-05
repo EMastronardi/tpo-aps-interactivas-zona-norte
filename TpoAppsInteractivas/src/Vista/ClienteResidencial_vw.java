@@ -335,16 +335,18 @@ public class ClienteResidencial_vw extends javax.swing.JFrame {
 									Textos.FALTANTES, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
 						}
 					}//Baja
-					if(sistema.bajaClienteResidencial(Integer.parseInt(jtNroCliente.getText()), null, null, null, null, null, null, null, null, null)){
-						JOptionPane.showMessageDialog(new PopUp_vw(), 
-								Textos.BAJA_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
-						//Vuelvo al menu principal
-						dispose();
-						new MenuPrincipal_vw(sistema);
-					}
 					else{
-						JOptionPane.showMessageDialog(new PopUp_vw(), 
-								Textos.BAJA_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+						if(sistema.bajaClienteResidencial(Integer.parseInt(jtNroCliente.getText()), null, null, null, null, null, null, null, null, null)){
+							JOptionPane.showMessageDialog(new PopUp_vw(), 
+									Textos.BAJA_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
+							//Vuelvo al menu principal
+							dispose();
+							new MenuPrincipal_vw(sistema);
+						}
+						else{
+							JOptionPane.showMessageDialog(new PopUp_vw(), 
+									Textos.BAJA_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+						}
 					}
 				}
 			}	
