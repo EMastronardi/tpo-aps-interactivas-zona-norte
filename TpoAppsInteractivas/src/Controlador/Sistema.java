@@ -36,6 +36,7 @@ public class Sistema {
 		
 		this.generarElementosCobrables();
 		this.generarLiquidadores();
+		this.generarClientes();
 		
 	}
 
@@ -49,6 +50,16 @@ public class Sistema {
 		cobrables.add(new ElementoCobrable("Subsidio", (float) 0.05));
 		
 		
+	}
+	
+	private void generarClientes(){
+		clientes.add(new Residencial("Mendoza", 5049, 14, "44", "1431", "Capital", "Buenos Aires", "Daniel", "Zanotti"));
+		clientes.add(new Residencial("Juramento", 453, 1, "A", "1812", "Munro", "Buenos Aires", "Emmanuel", "Mastronardi"));
+		clientes.add(new Residencial("Pampa", 234, 3, "F", "1603", "Vicente Lopez", "Buenos Aires", "Damian", "Quiroga"));
+		clientes.add(new Residencial("Olazabal", 45, 22, "22", "1431", "Ramos Mejia", "Buenos Aires", "Juan", "Fernandez"));
+		clientes.add(new Residencial("Biro", 10, 3, "C", "1234", "Castelar", "Buenos Aires", "Anibal", "Lopez"));
+		clientes.add(new Residencial("Thomas", 34566, 1, "H", "1909", "Padua", "Buenos Aires", "Leandro", "Micheltorena"));
+		clientes.add(new Residencial("Libertador", 2348, 0, "S1", "1343", "Merlo", "Buenos Aires", "Gabriela", "Gianni"));
 	}
 
 	static public Sistema getInstance(){
