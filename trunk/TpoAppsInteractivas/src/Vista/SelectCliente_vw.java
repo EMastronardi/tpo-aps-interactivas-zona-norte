@@ -42,6 +42,7 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 	
 	private Sistema sistema;
 	private ClienteResidencial_vw pClienteResidencial;
+	private ClienteIndustrial_vw pClienteIndustrial;
 	
 	private JLabel jlSeleccion;
 	private ButtonGroup bgTipoAccion;
@@ -263,6 +264,7 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 		
 		jbAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Residenciales
 				if(jrbResidencial.isSelected()){
 					if(jrbAlta.isSelected()){
 						if(pClienteResidencial == null){
@@ -288,7 +290,32 @@ public class SelectCliente_vw extends javax.swing.JFrame {
 						}
 					}
 				}
-				//hacer parte de industrial
+				//Industriales
+				if(jrbIndustrial.isSelected()){
+					if(jrbAlta.isSelected()){
+						if(pClienteIndustrial == null){
+							dispose();
+							pClienteIndustrial = new ClienteIndustrial_vw(sistema,0);
+						}
+					}
+					else{
+						if(jrbModificacion.isSelected()){
+							if(pClienteIndustrial == null){
+								dispose();
+								pClienteIndustrial = new ClienteIndustrial_vw(sistema,1);
+							}
+							pClienteIndustrial.cargarIndustrial((IndustrialView)jcbCliente.getSelectedItem());
+						}
+						else{
+							if(pClienteIndustrial == null){
+								dispose();
+								pClienteIndustrial = new ClienteIndustrial_vw(sistema,2);
+							}
+							pClienteIndustrial.cargarIndustrial((IndustrialView)jcbCliente.getSelectedItem());
+							pClienteIndustrial.inhabilitarCampos();
+						}
+					}
+				}
 			}
 		});
 		
