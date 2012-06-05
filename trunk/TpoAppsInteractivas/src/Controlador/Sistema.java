@@ -60,6 +60,10 @@ public class Sistema {
 		clientes.add(new Residencial("Biro", 10, 3, "C", "1234", "Castelar", "Buenos Aires", "Anibal", "Lopez"));
 		clientes.add(new Residencial("Thomas", 34566, 1, "H", "1909", "Padua", "Buenos Aires", "Leandro", "Micheltorena"));
 		clientes.add(new Residencial("Libertador", 2348, 0, "S1", "1343", "Merlo", "Buenos Aires", "Gabriela", "Gianni"));
+		clientes.add(new Industrial("Laprida", 3160, 0, "0", "1603", "Villa Martelli", "Buenos Aires", "Canal Directo S.A", "30-70774983-7", "901-7987343-01", "Inscripto"));
+		clientes.add(new Industrial("Libertador", 3860, 1, "A", "1633", "La Lucila", "Buenos Aires", "Microlending S.A", "30-703456345-7", "902-2342345-01", "Inscripto"));
+		clientes.add(new Industrial("Morris", 345, 0, "0", "2032", "Ferrere", "Buenos Aires", "Panchos S.A", "30-98723454-7", "901-23452345-01", "No Inscripto"));
+		clientes.add(new Industrial("Hornos", 239, 4, "S", "1722", "Moreno", "Buenos Aires", "Quimes S.A", "30-98274543-7", "904-234543223-01", "Inscripto"));
 	}
 
 	static public Sistema getInstance(){
