@@ -179,7 +179,7 @@ public class Sistema {
 		return false;
 	}
 	
-	public Boolean altaClienteIndustrial(Integer nroCliente, String calle, Integer altura,
+	public Boolean altaClienteIndustrial(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia, String razonSocial,
 			String cuit, String ingresosBrutos, String categoria) {
