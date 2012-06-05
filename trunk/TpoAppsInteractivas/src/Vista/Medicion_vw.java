@@ -225,8 +225,8 @@ public class Medicion_vw extends javax.swing.JFrame {
 						if(jrbResidencial.isSelected()){
 							ResidencialView aux = (ResidencialView) jcbCliente.getSelectedItem(); 
 
-							SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-							Date date = formatter.parse(fecha.getText());
+							//SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+							Date date = new Date(fecha.getText());
 
 							if(sistema.RegistrarMedicion(aux.getNroCliente(), date , Float.parseFloat(jtfValor.getText()))){	
 								JOptionPane.showMessageDialog(new PopUp_vw(), 
