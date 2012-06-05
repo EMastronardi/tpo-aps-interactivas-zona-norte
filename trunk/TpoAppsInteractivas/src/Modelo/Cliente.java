@@ -89,10 +89,11 @@ public abstract class Cliente {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
-	public void cargarMedicion(float valor, Date fecha){
-		
-		Medicion med = new Medicion(fecha, valor);
-		this.mediciones.add(med);
+	public boolean cargarMedicion(float valor, Date fecha){
+		if(this.mediciones.add(new Medicion(fecha, valor)))
+			return true;
+		else
+			return false;
 	}
 	public  String getIsA(){
 		return this.isA;
