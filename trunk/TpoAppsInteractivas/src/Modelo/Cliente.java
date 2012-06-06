@@ -16,7 +16,7 @@ public abstract class Cliente {
 	protected String provincia;
 	private ArrayList<Medicion> mediciones;
 	protected String isA;
-	private static int nroProximoCliente = 0;	
+	private static int nroProximoCliente = 0;
 	
 	
 	public void setIsA(String isA) {
@@ -33,6 +33,7 @@ public abstract class Cliente {
 		this.codigoPostal = codigoPostal;
 		this.localidad = localidad;
 		this.provincia = provincia;
+		this.mediciones = new ArrayList<Medicion>();
 		this.nroCliente = this.generarIdCliente();
 	}
 	
