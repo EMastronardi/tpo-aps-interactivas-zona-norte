@@ -108,16 +108,16 @@ public class ImpuestoTarifa_vw extends javax.swing.JFrame {
 				.addContainerGap()
 				.addComponent(jlSeleccionar, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-				.addComponent(jcbImpuestoTarifa, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addComponent(jcbImpuestoTarifa, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 				.addGap(17)
 				.addGroup(thisLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				    .addComponent(jtfValor, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 				    .addComponent(jlValor, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addGap(33)
+				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 				.addGroup(thisLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				    .addComponent(jbAceptar, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
 				    .addComponent(jbCancelar, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap(21, 21));
+				.addContainerGap(18, 18));
 			thisLayout.setHorizontalGroup(thisLayout.createSequentialGroup()
 				.addContainerGap()
 				.addGroup(thisLayout.createParallelGroup()
@@ -134,8 +134,8 @@ public class ImpuestoTarifa_vw extends javax.swing.JFrame {
 				                .addGap(12)
 				                .addGroup(thisLayout.createParallelGroup()
 				                    .addGroup(thisLayout.createSequentialGroup()
-				                        .addComponent(jbAceptar, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-				                        .addGap(0, 0, Short.MAX_VALUE))
+				                        .addGap(0, 0, Short.MAX_VALUE)
+				                        .addComponent(jbAceptar, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
 				                    .addGroup(GroupLayout.Alignment.LEADING, thisLayout.createSequentialGroup()
 				                        .addComponent(jtfValor, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
 				                        .addGap(0, 31, Short.MAX_VALUE)))
@@ -143,11 +143,11 @@ public class ImpuestoTarifa_vw extends javax.swing.JFrame {
 				            .addGroup(thisLayout.createSequentialGroup()
 				                .addComponent(jcbImpuestoTarifa, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
 				                .addGap(0, 0, Short.MAX_VALUE)))))
-				.addContainerGap(46, 46));
+				.addContainerGap(20, 20));
 			thisLayout.linkSize(SwingConstants.VERTICAL, new Component[] {jtfValor, jcbImpuestoTarifa});
 			thisLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {jbAceptar, jbCancelar});
 			pack();
-			this.setSize(390, 209);
+			this.setSize(364, 188);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
