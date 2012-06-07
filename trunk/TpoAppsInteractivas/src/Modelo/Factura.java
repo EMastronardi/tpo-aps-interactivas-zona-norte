@@ -16,6 +16,7 @@ public class Factura {
 		this.metrosCubicosConsumidos = cliente.obtenerUltimoConsumo();
 		this.cliente = cliente;
 		this.Items = this.generarFactura(this.cliente, liquidadores);
+		System.out.print("Se Creo Una Factura para: "+ this.cliente.getNroCliente()+"\n");
 	}
 	
 	public Integer getNroFactura() {
