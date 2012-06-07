@@ -195,7 +195,7 @@ public class Sistema {
 	}
 	public ElementoCobrable buscarElementoPorNombre(String nombre){
 		for (ElementoCobrable elem : cobrables) {
-			if(elem.getNombre() == nombre){
+			if(elem.getNombre().equals(nombre)){
 				return elem;
 			}
 		}
