@@ -25,8 +25,8 @@ public class Textos {
 	public final static String MEDICION_ERROR = "La medicion no se pudo grabar correctamente";
 	
 	public final static String CONFIRMAR_FACTURACION = "Esta seguro que desea generar el proceso de facturación";
-	public final static String FACTURACION_OK = "El proceso de facturacion no se pudo generar correctamente";
-	public final static String FACTURACION_ERROR = "El proceso de facturacion se genero correctamente";
+	public final static String FACTURACION_OK = "El proceso de facturacion se pudo generar correctamente";
+	public final static String FACTURACION_ERROR = "El proceso de facturacion no se genero correctamente";
 	
 }
 

@@ -174,7 +174,7 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 					}
 					else{
 						JOptionPane.showMessageDialog(new PopUp_vw(), 
-								Textos.FACTURACION_OK, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+								Textos.FACTURACION_ERROR, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
 					}
 						
 				}
