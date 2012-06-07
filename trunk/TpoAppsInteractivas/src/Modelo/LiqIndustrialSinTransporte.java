@@ -10,7 +10,7 @@ public final class LiqIndustrialSinTransporte extends LiquidadorIndustrial{
 	}
 
 	public ArrayList<ItemFactura> liquidar(String tipoCliente, float consumo) {
-		if(this.estado == true && tipoCliente == "industrial" && consumo <= 700){
+		if(this.estado == true && tipoCliente.equals("industrial") && consumo <= 700){
 			ArrayList<ItemFactura> items = new ArrayList<>();
 			ItemFactura itmConsumo = new ItemFactura("Consumo metros cubicos", this.calcularConsumo(consumo));
 			items.add(itmConsumo);
