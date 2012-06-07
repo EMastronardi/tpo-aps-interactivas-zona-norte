@@ -7,14 +7,15 @@ import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import Util.Textos;
 import Controlador.Sistema;
 
-import Vista.*;
 
 
 /**
@@ -34,34 +35,20 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 	private Sistema sistema; 
 	private SelectCliente_vw pSelectCliente;
 	private Medicion_vw pMedicion;
+	private ImpuestoTarifa_vw pImpuestoTarifa;
 	
 	private JMenuBar jMenuPrincipal;
 	private JMenu jmFacturacion;
 	private JMenu jmReportes;
 	private JMenuItem jmiSelectCliente;
 	private JMenuItem jmiRegistrarMedicion;
-	private JMenu JmTarifa;
-	private JMenu jmImpuesto;
+	private JMenu jmImpuestoTarifa;
 	private JMenu jmMedicion;
 	private JMenuItem jmiSalir;
 	private JMenu jmSalir;
 	private JMenuItem jmiGenerarFacturacion;
-	private JMenuItem jmiTarifas;
-	private JMenuItem jmiImpuesto;
+	private JMenuItem jmiImpuestoTarifa;
 	private JMenu jmCliente;
-
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
-	/*public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				MenuPrincipal_vw inst = new MenuPrincipal_vw();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}*/
 	
 	public MenuPrincipal_vw(Sistema sistema) {
 		super();
@@ -105,23 +92,13 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 					}
 				}
 				{
-					jmImpuesto = new JMenu();
-					jMenuPrincipal.add(jmImpuesto);
-					jmImpuesto.setText("Impuestos");
+					jmImpuestoTarifa = new JMenu();
+					jMenuPrincipal.add(jmImpuestoTarifa);
+					jmImpuestoTarifa.setText("Impuestos & Tarifas");
 					{
-						jmiImpuesto = new JMenuItem();
-						jmImpuesto.add(jmiImpuesto);
-						jmiImpuesto.setText("Modificar Impuestos");
-					}
-				}
-				{
-					JmTarifa = new JMenu();
-					jMenuPrincipal.add(JmTarifa);
-					JmTarifa.setText("Tarifas");
-					{
-						jmiTarifas = new JMenuItem();
-						JmTarifa.add(jmiTarifas);
-						jmiTarifas.setText("Modificar Tarifas");
+						jmiImpuestoTarifa = new JMenuItem();
+						jmImpuestoTarifa.add(jmiImpuestoTarifa);
+						jmiImpuestoTarifa.setText("Modificar Impuestos & Tarifas");
 					}
 				}
 				{
@@ -174,6 +151,32 @@ public class MenuPrincipal_vw extends javax.swing.JFrame {
 				dispose();
 				if (pMedicion == null){
 					pMedicion = new Medicion_vw(sistema);
+				}
+			}
+		});
+		
+		jmiImpuestoTarifa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				if (pImpuestoTarifa == null){
+					pImpuestoTarifa = new ImpuestoTarifa_vw(sistema);
+				}
+			}
+		});
+		
+		jmiGenerarFacturacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int respuesta = JOptionPane.showConfirmDialog(new PopUp_vw(), Util.Textos.CONFIRMAR_FACTURACION, Textos.CONFIRMAR, JOptionPane.YES_NO_OPTION);
+				if(respuesta == JOptionPane.YES_OPTION){
+					if(sistema.facturar()){
+						JOptionPane.showMessageDialog(new PopUp_vw(), 
+								Textos.FACTURACION_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
+					}
+					else{
+						JOptionPane.showMessageDialog(new PopUp_vw(), 
+								Textos.FACTURACION_OK, Textos.ERROR, JOptionPane.ERROR_MESSAGE);
+					}
+						
 				}
 			}
 		});
