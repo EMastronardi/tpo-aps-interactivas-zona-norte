@@ -23,33 +23,10 @@ public class Textos {
 	
 	public final static String MEDICION_OK = "La medicion se grabo correctamente";
 	public final static String MEDICION_ERROR = "La medicion no se pudo grabar correctamente";
-	/*
-	public final static String USUARIO_VACIO = "El campo Usuario no puede estar vacio.";
-	public final static String PASSWORD_VACIO = "El campo Passowrd no puede estar vacio.";
-	public final static String DESCRIPCION_VACIO = "El campo Descripci�n no puede estar vacio.";
-	public final static String ESTADO_VACIO = "El campo Estado no puede estar vacio.";
-	public final static String PROYECTO_VACIO = "El campo Proyecto no puede estar vacio.";
-	public final static String REQUERIMIENTO_VACIO = "El campo Requerimiento no puede estar vacio.";
-	public final static String SALIR_SISTEMA = "Confirmar Salida";
-	public final static String SALIDA_SISTEMA = "�Realmente desea salir del Sistema?";
 	
-	public final static String HORA_ESTIMADA_SOLO_NUMERO = "El campo Hora estimada solo acepta n�meros";
+	public final static String CONFIRMAR_FACTURACION = "Esta seguro que desea generar el proceso de facturación";
+	public final static String FACTURACION_OK = "El proceso de facturacion no se pudo generar correctamente";
+	public final static String FACTURACION_ERROR = "El proceso de facturacion se genero correctamente";
 	
-	public final static String NO_REQUERIMIENTOS = "No se encontraron Requerimientos con los parametros indicados.";
-	
-	public final static String REPORTE_TIPO = "No se selecciono tipo de reporte";
-	public final static String REPORTE_FECHA = "No se selecciono fechas";
-	
-	public final static String CANCELAR_CARGA_HORAS = "Cancelar carga de horas";
-	public final static String SALIDA_CARGA_HORAS = "�Realmente desea cancelar la carga de horas?";
-	public final static String HORAS_DUPLICADAS = "Existen registros de horas duplicados. Por favor corrija los datos.";
-	public final static String NUEVO_REGISTRO = "Imposible insertar un nuevo registro. Realizar la carga de a uno a la vez.";
-	public final static String SELECCION_SEMANA = "Por favor seleccione una semana antes de continuar";
-	public final static String GUARDAR_HORAS_ERROR = "El registro de horas no pudo llevarse a cabo.";
-	public final static String GUARDAR_HORAS_OK = "El registro de horas se realiz� correctamente.";
-	public final static String HORAS_EXCEDIDAS = "Se excedieron las 40 horas semanales.";
-	
-	public final static String CONEXION_JDBC_ERROR = "Se ha producido un error al querer conectarse a la base de datos.";
-	public final static String GENERAR_REPORTE_ERROR = "Se produjo un error al generar el reporte solicitado.";*/
 }
 
