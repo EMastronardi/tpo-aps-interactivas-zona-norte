@@ -6,6 +6,7 @@ import Modelo.Cliente;
 import Modelo.IndustrialView;
 import Modelo.ResidencialView;
 import Modelo.ElementoCobrable;
+import Modelo.ElementoCobrableView;
 import Modelo.Factura;
 import Modelo.Industrial;
 import Modelo.LiqIndustrialConTransporte;
@@ -316,7 +317,7 @@ public class Sistema {
 	public boolean facturar(){
 		for (Cliente cli : clientes) {
 			try {
-				Factura fact = new Factura(cli.obtenerUltimoConsumo(),cli,liquidadores);
+				Factura fact = new Factura(cli,liquidadores);
 				facturas.add(fact);
 			} catch (Exception e) {
 				return false;
@@ -347,6 +348,23 @@ public class Sistema {
 			}
 		}
 		return cli;
+	}
+	
+	public ArrayList<ElementoCobrableView> obtenerElementosCobrables(){
+		ArrayList<ElementoCobrableView> elem = new ArrayList<ElementoCobrableView>();
+		for(ElementoCobrable ec : cobrables){
+				elem.add(ec.generarElementoCobrableView());
+			}
+		return elem;
+	}
+	
+	public boolean modificarElementoCobrable(String nombre, float valor){
+		ElementoCobrable elem = buscarElementoPorNombre(nombre);
+		if(elem!=null){
+			elem.setValor(valor);
+			return true;
+		}
+		return false;
 	}
 
 }
