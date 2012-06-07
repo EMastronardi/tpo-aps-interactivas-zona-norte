@@ -155,15 +155,15 @@ public class Sistema {
 		ArrayList<ElementoCobrable> elementos = new ArrayList<>();
 		elementos.add(this.buscarElementoPorNombre("IVA Consumidor final"));
 		elementos.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
-		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(false, elementos);
+		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(true, elementos);
 		elementos.add(this.buscarElementoPorNombre("Subsidio"));
-		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(false, elementos);
+		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(true, elementos);
 		elementos.clear();
 		elementos.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
 		elementos.add(this.buscarElementoPorNombre("Ingresos Brutos"));
-		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(false, elementos);
+		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(true, elementos);
 		elementos.add(this.buscarElementoPorNombre("Transporte"));
-		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(false, elementos);
+		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(true, elementos);
 		
 		liquidadores.add(residencialSinSubSidio);
 		liquidadores.add(residencialConSubSidio);
