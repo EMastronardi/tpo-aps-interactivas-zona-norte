@@ -10,6 +10,7 @@ public class ItemFactura {
 		super();
 		this.nombre = nombre;
 		this.Valor = valor;
+		//System.out.print(nombre +" - "+ Float.toString(valor)+"\n");
 	}
 
 	public String getNombre() {
