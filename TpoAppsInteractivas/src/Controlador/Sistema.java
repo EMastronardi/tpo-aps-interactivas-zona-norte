@@ -152,18 +152,28 @@ public class Sistema {
 	
 	private void generarLiquidadores(){
 		//generacion de instancias iniciales de liquidadores
-		ArrayList<ElementoCobrable> elementos = new ArrayList<>();
-		elementos.add(this.buscarElementoPorNombre("IVA Consumidor final"));
-		elementos.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
-		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(true, elementos);
-		elementos.add(this.buscarElementoPorNombre("Subsidio"));
-		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(true, elementos);
-		elementos.clear();
-		elementos.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
-		elementos.add(this.buscarElementoPorNombre("Ingresos Brutos"));
-		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(true, elementos);
-		elementos.add(this.buscarElementoPorNombre("Transporte"));
-		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(true, elementos);
+		ArrayList<ElementoCobrable> elementos1 = new ArrayList<>();
+		ArrayList<ElementoCobrable> elementos2 = new ArrayList<>();
+		ArrayList<ElementoCobrable> elementos3 = new ArrayList<>();
+		ArrayList<ElementoCobrable> elementos4 = new ArrayList<>();
+		
+		elementos1.add(this.buscarElementoPorNombre("IVA Consumidor final"));
+		elementos1.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
+		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(true, elementos1);
+		
+		elementos2.add(this.buscarElementoPorNombre("IVA Consumidor final"));
+		elementos2.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
+		elementos2.add(this.buscarElementoPorNombre("Subsidio"));
+		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(true, elementos2);
+		
+		elementos3.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
+		elementos3.add(this.buscarElementoPorNombre("Ingresos Brutos"));
+		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(true, elementos3);
+		
+		elementos4.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
+		elementos4.add(this.buscarElementoPorNombre("Ingresos Brutos"));
+		elementos4.add(this.buscarElementoPorNombre("Transporte"));
+		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(true, elementos4);
 		
 		liquidadores.add(residencialSinSubSidio);
 		liquidadores.add(residencialConSubSidio);
