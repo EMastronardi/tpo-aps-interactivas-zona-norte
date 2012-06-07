@@ -64,8 +64,9 @@ public class Factura {
 			iFact = liquidadores.get(i).liquidar(cli.getIsA(), cli.obtenerUltimoConsumo());
 			if(iFact != null){
 				seguir = false;
-				i++;
+				
 			}
+			i++;
 		}
 		return iFact;
 	}
