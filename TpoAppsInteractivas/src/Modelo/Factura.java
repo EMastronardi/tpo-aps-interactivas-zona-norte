@@ -12,8 +12,8 @@ public class Factura {
 	private float valorTotal;
 	private ArrayList<ItemFactura> Items;
 	
-	public Factura(float metrosCubicosConsumidos, Cliente cliente, ArrayList<Liquidador> liquidadores) {
-		this.metrosCubicosConsumidos = metrosCubicosConsumidos;
+	public Factura(Cliente cliente, ArrayList<Liquidador> liquidadores) {
+		this.metrosCubicosConsumidos = cliente.obtenerUltimoConsumo();
 		this.cliente = cliente;
 		this.Items = this.generarFactura(this.cliente, liquidadores);
 	}
