@@ -27,7 +27,7 @@ public abstract class Liquidador {
 	}
 	protected ElementoCobrable getElementoCobrablePorNombre(String nombre){
 		for (ElementoCobrable elem : cobrales) {
-			if(elem.getNombre()== nombre){
+			if(elem.getNombre().equals(nombre)){
 				return elem;
 			}
 		}
