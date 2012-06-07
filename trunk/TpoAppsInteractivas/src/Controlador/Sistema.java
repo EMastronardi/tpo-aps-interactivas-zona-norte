@@ -55,90 +55,90 @@ public class Sistema {
 	private void generarClientes(){
 		Cliente cli = new Residencial("Mendoza", 5049, 14, "44", "1431", "Capital", "Buenos Aires", "Daniel", "Zanotti");
 		cli.cargarMedicion(150, new Date(112, 5, 5));
-		cli.cargarMedicion(135, new Date(112, 4, 3));
+		cli.cargarMedicion(285, new Date(112, 4, 3));
 		cli.cargarMedicion((float)149.5, new Date(112, 3, 7));
-		cli.cargarMedicion(160, new Date(112, 2, 2));
-		cli.cargarMedicion(170, new Date(112, 1, 1));
+		cli.cargarMedicion(360, new Date(112, 2, 2));
+		cli.cargarMedicion(470, new Date(112, 1, 1));
 		clientes.add(cli);
 		
 		cli = new Residencial("Juramento", 453, 1, "A", "1812", "Munro", "Buenos Aires", "Emmanuel", "Mastronardi");
 		cli.cargarMedicion(100, new Date(112, 5, 4));
-		cli.cargarMedicion(125, new Date(112, 4, 8));
-		cli.cargarMedicion((float)139.7, new Date(112, 3, 1));
-		cli.cargarMedicion((float)160.8, new Date(112, 2, 4));
-		cli.cargarMedicion((float)155.3, new Date(112, 1, 5));
+		cli.cargarMedicion(225, new Date(112, 4, 8));
+		cli.cargarMedicion((float)339.7, new Date(112, 3, 1));
+		cli.cargarMedicion((float)460.8, new Date(112, 2, 4));
+		cli.cargarMedicion((float)555.3, new Date(112, 1, 5));
 		clientes.add(cli);
 		
 		cli = new Residencial("Pampa", 234, 3, "F", "1603", "Vicente Lopez", "Buenos Aires", "Damian", "Quiroga");
-		cli.cargarMedicion(79, new Date(112, 5, 1));
-		cli.cargarMedicion(88, new Date(112, 4, 2));
-		cli.cargarMedicion((float)100.7, new Date(112, 3, 3));
-		cli.cargarMedicion((float)133.8, new Date(112, 2, 4));
-		cli.cargarMedicion((float)207.1, new Date(112, 1, 5));
+		cli.cargarMedicion(179, new Date(112, 5, 1));
+		cli.cargarMedicion(288, new Date(112, 4, 2));
+		cli.cargarMedicion((float)350.7, new Date(112, 3, 3));
+		cli.cargarMedicion((float)433.8, new Date(112, 2, 4));
+		cli.cargarMedicion((float)507.1, new Date(112, 1, 5));
 		clientes.add(cli);
 		
 		cli = new Residencial("Olazabal", 45, 22, "22", "1431", "Ramos Mejia", "Buenos Aires", "Juan", "Fernandez");
 		cli.cargarMedicion(137, new Date(112, 5, 29));
-		cli.cargarMedicion(150, new Date(112, 4, 1));
-		cli.cargarMedicion((float)81.2, new Date(112, 3, 29));
-		cli.cargarMedicion((float)98.3, new Date(112, 2, 14));
-		cli.cargarMedicion((float)105.5, new Date(112, 1, 10));
+		cli.cargarMedicion(250, new Date(112, 4, 1));
+		cli.cargarMedicion((float)381.2, new Date(112, 3, 29));
+		cli.cargarMedicion((float)498.3, new Date(112, 2, 14));
+		cli.cargarMedicion((float)505.5, new Date(112, 1, 10));
 		clientes.add(cli);
 		
 		cli = new Residencial("Biro", 10, 3, "C", "1234", "Castelar", "Buenos Aires", "Anibal", "Lopez");
-		cli.cargarMedicion(100, new Date(112, 5, 1));
-		cli.cargarMedicion(100, new Date(112, 4, 1));
-		cli.cargarMedicion(100, new Date(112, 3, 1));
-		cli.cargarMedicion(100, new Date(112, 2, 1));
-		cli.cargarMedicion(100, new Date(112, 1, 1));
+		cli.cargarMedicion(141, new Date(112, 5, 1));
+		cli.cargarMedicion(252, new Date(112, 4, 1));
+		cli.cargarMedicion(363, new Date(112, 3, 1));
+		cli.cargarMedicion(474, new Date(112, 2, 1));
+		cli.cargarMedicion(585, new Date(112, 1, 1));
 		clientes.add(cli);
 		
 		cli = new Residencial("Thomas", 34566, 1, "H", "1909", "Padua", "Buenos Aires", "Leandro", "Micheltorena");
-		cli.cargarMedicion(120, new Date(112, 5, 2));
-		cli.cargarMedicion(120, new Date(112, 4, 2));
-		cli.cargarMedicion(120, new Date(112, 3, 2));
-		cli.cargarMedicion(120, new Date(112, 2, 2));
-		cli.cargarMedicion(120, new Date(112, 1, 2));
+		cli.cargarMedicion(123, new Date(112, 5, 2));
+		cli.cargarMedicion(234, new Date(112, 4, 2));
+		cli.cargarMedicion(345, new Date(112, 3, 2));
+		cli.cargarMedicion(456, new Date(112, 2, 2));
+		cli.cargarMedicion(567, new Date(112, 1, 2));
 		clientes.add(cli);
 		
 		cli = new Residencial("Libertador", 2348, 0, "S1", "1343", "Merlo", "Buenos Aires", "Gabriela", "Gianni");
-		cli.cargarMedicion(130, new Date(112, 6, 3));
-		cli.cargarMedicion(130, new Date(112, 5, 3));
-		cli.cargarMedicion(130, new Date(112, 4, 3));
-		cli.cargarMedicion(130, new Date(112, 3, 3));
-		cli.cargarMedicion(130, new Date(112, 2, 103));
+		cli.cargarMedicion(122, new Date(112, 6, 3));
+		cli.cargarMedicion(233, new Date(112, 5, 3));
+		cli.cargarMedicion(344, new Date(112, 4, 3));
+		cli.cargarMedicion(455, new Date(112, 3, 3));
+		cli.cargarMedicion(566, new Date(112, 2, 3));
 		clientes.add(cli);
 		
 		cli = new Industrial("Laprida", 3160, 0, "0", "1603", "Villa Martelli", "Buenos Aires", "Canal Directo S.A", "30-70774983-7", "901-7987343-01", "Inscripto");
-		cli.cargarMedicion(140, new Date(112, 5, 4));
-		cli.cargarMedicion(140, new Date(112, 4, 4));
-		cli.cargarMedicion(140, new Date(112, 3, 4));
-		cli.cargarMedicion(140, new Date(112, 2, 4));
-		cli.cargarMedicion(140, new Date(112, 1, 4));
+		cli.cargarMedicion(111, new Date(112, 5, 4));
+		cli.cargarMedicion(222, new Date(112, 4, 4));
+		cli.cargarMedicion(333, new Date(112, 3, 4));
+		cli.cargarMedicion(444, new Date(112, 2, 4));
+		cli.cargarMedicion(555, new Date(112, 1, 4));
 		clientes.add(cli);
 		
 		cli = new Industrial("Libertador", 3860, 1, "A", "1633", "La Lucila", "Buenos Aires", "Microlending S.A", "30-703456345-7", "902-2342345-01", "Inscripto");
-		cli.cargarMedicion(150, new Date(112, 5, 5));
-		cli.cargarMedicion(150, new Date(112, 4, 5));
-		cli.cargarMedicion(150, new Date(112, 3, 5));
-		cli.cargarMedicion(150, new Date(112, 2, 5));
-		cli.cargarMedicion(150, new Date(112, 1, 5));
+		cli.cargarMedicion(122, new Date(112, 5, 5));
+		cli.cargarMedicion(233, new Date(112, 4, 5));
+		cli.cargarMedicion(344, new Date(112, 3, 5));
+		cli.cargarMedicion(455, new Date(112, 2, 5));
+		cli.cargarMedicion(566, new Date(112, 1, 5));
 		clientes.add(cli);
 		
 		cli = new Industrial("Morris", 345, 0, "0", "2032", "Ferrere", "Buenos Aires", "Panchos S.A", "30-98723454-7", "901-23452345-01", "No Inscripto");
-		cli.cargarMedicion(160, new Date(112, 5, 6));
-		cli.cargarMedicion(160, new Date(112, 4, 6));
-		cli.cargarMedicion(160, new Date(112, 3, 6));
-		cli.cargarMedicion(160, new Date(112, 2, 6));
-		cli.cargarMedicion(160, new Date(112, 1, 6));
+		cli.cargarMedicion(199, new Date(112, 5, 6));
+		cli.cargarMedicion(298, new Date(112, 4, 6));
+		cli.cargarMedicion(397, new Date(112, 3, 6));
+		cli.cargarMedicion(496, new Date(112, 2, 6));
+		cli.cargarMedicion(594, new Date(112, 1, 6));
 		clientes.add(cli);
 		
 		cli = new Industrial("Hornos", 239, 4, "S", "1722", "Moreno", "Buenos Aires", "Quilmes S.A", "30-98274543-7", "904-234543223-01", "Inscripto");
-		cli.cargarMedicion(170, new Date(112, 5, 7));
-		cli.cargarMedicion(170, new Date(112, 4, 7));
-		cli.cargarMedicion(170, new Date(112, 3, 7));
-		cli.cargarMedicion(170, new Date(112, 2, 7));
-		cli.cargarMedicion(170, new Date(112, 1, 7));
+		cli.cargarMedicion(155, new Date(112, 5, 7));
+		cli.cargarMedicion(255, new Date(112, 4, 7));
+		cli.cargarMedicion(355, new Date(112, 3, 7));
+		cli.cargarMedicion(455, new Date(112, 2, 7));
+		cli.cargarMedicion(555, new Date(112, 1, 7));
 		clientes.add(cli);
 	}
 
