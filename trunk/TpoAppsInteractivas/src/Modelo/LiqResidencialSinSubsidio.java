@@ -9,7 +9,7 @@ public final class LiqResidencialSinSubsidio extends LiquidadorResidencial {
 	}
 
 	public ArrayList<ItemFactura> liquidar(String tipoCliente, float consumo) {
-		if(this.estado == true && tipoCliente == "residencial"){
+		if(this.estado == true && tipoCliente.equals("residencial")){
 			
 			ArrayList<ItemFactura> items = new ArrayList<>();
 			ItemFactura itmConsumo = new ItemFactura("Consumo metros cubicos", this.calcularConsumo(consumo));
