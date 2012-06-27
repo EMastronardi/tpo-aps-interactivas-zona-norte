@@ -160,7 +160,7 @@ public class ImpuestoTarifa_vw extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!jtfValor.getText().isEmpty()){
 					ElementoCobrableView aux = (ElementoCobrableView) jcbImpuestoTarifa.getSelectedItem();
-					if(sistema.modificarElementoCobrable(aux.getNombre(), Float.parseFloat(jtfValor.getText()))){
+					if(sistema.modificarElementoCobrable(aux.getNroElementoCobrable(), Float.parseFloat(jtfValor.getText()))){
 						JOptionPane.showMessageDialog(new PopUp_vw(), 
 								Textos.MODIFICACION_OK, Textos.AVISO, JOptionPane.INFORMATION_MESSAGE);
 						//Vuelvo al menu principal

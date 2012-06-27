@@ -44,12 +44,12 @@ public class Sistema {
 	
 	private void generarElementosCobrables() {
 		//elementos cobrables iniciales
-		cobrables.add(new ElementoCobrable("IVA Consumidor final", (float) 0.21));
-		cobrables.add(new ElementoCobrable("IVA Resp. Inscripto", (float) 0.21));
-		cobrables.add(new ElementoCobrable("Contribuciones Municipales", (float) 0.05));
-		cobrables.add(new ElementoCobrable("Ingresos Brutos", (float) 0.03));
-		cobrables.add(new ElementoCobrable("Transporte", (float) 0.03));
-		cobrables.add(new ElementoCobrable("Subsidio", (float) 0.05));
+		cobrables.add(new ElementoCobrable(1,"IVA Consumidor final", (float) 0.21));
+		cobrables.add(new ElementoCobrable(2,"IVA Resp. Inscripto", (float) 0.21));
+		cobrables.add(new ElementoCobrable(3,"Contribuciones Municipales", (float) 0.05));
+		cobrables.add(new ElementoCobrable(4,"Ingresos Brutos", (float) 0.03));
+		cobrables.add(new ElementoCobrable(5,"Transporte", (float) 0.03));
+		cobrables.add(new ElementoCobrable(6,"Subsidio", (float) 0.05));
 
 	}
 	
@@ -157,22 +157,22 @@ public class Sistema {
 		ArrayList<ElementoCobrable> elementos3 = new ArrayList<>();
 		ArrayList<ElementoCobrable> elementos4 = new ArrayList<>();
 		
-		elementos1.add(this.buscarElementoPorNombre("IVA Consumidor final"));
-		elementos1.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
+		elementos1.add(this.buscarElementoCobrable(1));
+		elementos1.add(this.buscarElementoCobrable(3));
 		LiqResidencialSinSubsidio residencialSinSubSidio = new LiqResidencialSinSubsidio(true, elementos1);
 		
-		elementos2.add(this.buscarElementoPorNombre("IVA Consumidor final"));
-		elementos2.add(this.buscarElementoPorNombre("Contribuciones Municipales"));
-		elementos2.add(this.buscarElementoPorNombre("Subsidio"));
+		elementos2.add(this.buscarElementoCobrable(1));
+		elementos2.add(this.buscarElementoCobrable(3));
+		elementos2.add(this.buscarElementoCobrable(6));
 		LiqResidencialConSubsidio residencialConSubSidio = new LiqResidencialConSubsidio(true, elementos2);
 		
-		elementos3.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
-		elementos3.add(this.buscarElementoPorNombre("Ingresos Brutos"));
+		elementos3.add(this.buscarElementoCobrable(2));
+		elementos3.add(this.buscarElementoCobrable(4));
 		LiqIndustrialSinTransporte industrialSinTransporte = new LiqIndustrialSinTransporte(true, elementos3);
 		
-		elementos4.add(this.buscarElementoPorNombre("IVA Resp. Inscripto"));
-		elementos4.add(this.buscarElementoPorNombre("Ingresos Brutos"));
-		elementos4.add(this.buscarElementoPorNombre("Transporte"));
+		elementos4.add(this.buscarElementoCobrable(2));
+		elementos4.add(this.buscarElementoCobrable(4));
+		elementos4.add(this.buscarElementoCobrable(5));
 		LiqIndustrialConTransporte industrialConTrasporte = new LiqIndustrialConTransporte(true, elementos4);
 		
 		liquidadores.add(residencialSinSubSidio);
@@ -203,9 +203,9 @@ public class Sistema {
 		}
 		return null;
 	}
-	public ElementoCobrable buscarElementoPorNombre(String nombre){
+	public ElementoCobrable buscarElementoCobrable(int nroEC){
 		for (ElementoCobrable elem : cobrables) {
-			if(elem.getNombre().equals(nombre)){
+			if(elem.getNroElementoCobrable()==nroEC){
 				return elem;
 			}
 		}
@@ -368,8 +368,8 @@ public class Sistema {
 		return elem;
 	}
 	
-	public boolean modificarElementoCobrable(String nombre, float valor){
-		ElementoCobrable elem = buscarElementoPorNombre(nombre);
+	public boolean modificarElementoCobrable(int nroEC, float valor){
+		ElementoCobrable elem = buscarElementoCobrable(nroEC);
 		if(elem!=null){
 			elem.setValor(valor);
 			return true;
