@@ -1,4 +1,4 @@
-jdbc=jdbc:sqlserver://192.168.56.2:1433
+jdbc=jdbc:sqlserver://
 servidor=192.168.56.2:1433
 usuario=sistemaliquidaciongas
 password=sistemaliquidaciongas
