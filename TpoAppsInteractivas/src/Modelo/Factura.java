@@ -3,20 +3,22 @@ package Modelo;
 import java.util.*;
 import Modelo.Cliente;
 import Modelo.ItemFactura;
+import Persistencia.AdmPersistenciaFactura;
 
 public class Factura {
 	private Integer nroFactura;
 	private float metrosCubicosConsumidos;
 	private Date fecha;
 	private Cliente cliente;
-	private float valorTotal;
 	private ArrayList<ItemFactura> Items;
 	
-	public Factura(Cliente cliente, ArrayList<Liquidador> liquidadores) {
+	public Factura(Integer nrofact, Cliente cliente, ArrayList<Liquidador> liquidadores) {
+		this.nroFactura = nrofact;
+		this.fecha = new Date();
 		this.metrosCubicosConsumidos = cliente.obtenerUltimoConsumo();
 		this.cliente = cliente;
 		this.Items = this.generarFactura(this.cliente, liquidadores);
-		//System.out.print("Se Creo Una Factura para: "+ this.cliente.getNroCliente()+"\n");
+		AdmPersistenciaFactura.getInstancia().insert(this);
 	}
 	
 	public Integer getNroFactura() {
@@ -43,12 +45,6 @@ public class Factura {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public float getValorTotal() {
-		return valorTotal;
-	}
-	public void setValorTotal(float valorTotal) {
-		this.valorTotal = valorTotal;
-	}
 	public ArrayList<ItemFactura> getItems() {
 		return Items;
 	}
@@ -70,6 +66,13 @@ public class Factura {
 			i++;
 		}
 		return iFact;
+	}
+	public float getValorTotal(){
+		float total = 0;
+		for(ItemFactura itm : this.Items){
+			total = total + itm.getValor();
+		}
+		return total;
 	}
 }
 

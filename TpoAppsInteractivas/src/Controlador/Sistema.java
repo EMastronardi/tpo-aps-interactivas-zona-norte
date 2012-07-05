@@ -327,7 +327,7 @@ public class Sistema {
 	public boolean facturar(){
 		for (Cliente cli : clientes) {
 			try {
-				Factura fact = new Factura(cli,liquidadores);
+				Factura fact = new Factura(facturas.get(facturas.size()-1).getNroFactura()+1,cli,liquidadores);
 				facturas.add(fact);
 			} catch (Exception e) {
 				return false;
