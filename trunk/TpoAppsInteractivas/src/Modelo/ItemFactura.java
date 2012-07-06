@@ -1,16 +1,29 @@
 package Modelo;
 import java.util.*;
 
+import Persistencia.AdmPersistenciaFactura;
+import Persistencia.AdmPersistenciaItemFactura;
+
 
 public class ItemFactura {
 	private String nombre;
 	private float Valor;
+	private static int ultNroItemFactura = -1;
+	
+	public static void leerUltNroFactura(){
+		if(ultNroItemFactura == -1)
+			ultNroItemFactura = AdmPersistenciaItemFactura.getInstancia().getUltNumItemFactura();
+	}
+	public static int getProxNroFactura(){
+		ultNroItemFactura +=1;
+		return ultNroItemFactura;
+	}
 	
 	public ItemFactura(String nombre,float valor ) {
 		super();
 		this.nombre = nombre;
 		this.Valor = valor;
-		//System.out.print(nombre +" - "+ Float.toString(valor)+"\n");
+		
 	}
 
 	public String getNombre() {

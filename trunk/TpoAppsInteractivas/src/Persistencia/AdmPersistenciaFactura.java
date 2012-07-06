@@ -4,6 +4,7 @@ import java.awt.ItemSelectable;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Modelo.Factura;
@@ -25,6 +26,29 @@ public class AdmPersistenciaFactura {
 			instancia = new AdmPersistenciaFactura();
 		return instancia;
 	}
+	public int getUltNumFactura(){
+		try {
+			Connection con = PoolConnection.getPoolConnection().getConnection();
+			int count = 0;
+			PreparedStatement c = con.prepareStatement("Select count(*) cant from  Facturas");
+			ResultSet rsc = c.executeQuery();
+			while(rsc.next()){
+				if(rsc.getInt(1) != 0){
+					PreparedStatement s = con.prepareStatement("Select top 1 nroFactura from Facturas order by 1 desc");
+					ResultSet rs =  s.executeQuery();
+					while(rs.next()){
+						return rs.getInt(1);
+					}
+		
+				}else{
+					return 1;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		return -1;
+	}
 	
 	public void insert(Object o) 
 	{
@@ -36,22 +60,23 @@ public class AdmPersistenciaFactura {
 			//agregar campos
 			s.setInt(1, f.getNroFactura());
 			s.setFloat(2, f.getMetrosCubicosConsumidos());
-			s.setDate(3, (Date) f.getFecha());
-			s.setInt(4, f.getCliente().getNroCliente());
 			
+			java.sql.Date sqlDate = new java.sql.Date(f.getFecha().getTime()); 
+			s.setDate(3, (Date) sqlDate);
+			s.setInt(4, f.getCliente().getNroCliente());
+			s.execute();
 			//Persistir items de factura
 			ArrayList<ItemFactura> aux = f.getItems();
-			Integer nroItem = 0; 
 			for(ItemFactura item : aux){
-				AdmPersistenciaItemFactura.getInstancia().insert(nroItem + 1,item, f.getNroFactura());
+				AdmPersistenciaItemFactura.getInstancia().insert(ItemFactura.getProxNroFactura(),item, f.getNroFactura());
 			}
 			
-			s.execute();
+			
 			PoolConnection.getPoolConnection().realeaseConnection(con);
 		}
 		catch (Exception e)
 		{
-			System.out.println();
+			System.err.println(e);
 		}
 		
 

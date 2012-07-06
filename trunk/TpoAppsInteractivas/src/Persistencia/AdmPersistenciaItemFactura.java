@@ -3,6 +3,7 @@ package Persistencia;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import Modelo.ItemFactura;
 
@@ -39,10 +40,34 @@ public class AdmPersistenciaItemFactura {
 		}
 		catch (Exception e)
 		{
-			System.out.println();
+			System.err.println(e);
 		}
 		
 
+	}
+
+	public int getUltNumItemFactura(){
+		try {
+			Connection con = PoolConnection.getPoolConnection().getConnection();
+			int count = 0;
+			PreparedStatement c = con.prepareStatement("Select count(*) cant from  ItemsFactura");
+			ResultSet rsc = c.executeQuery();
+			while(rsc.next()){
+				if(rsc.getInt(1) != 0){
+					PreparedStatement s = con.prepareStatement("Select top 1 nroItemFactura from ItemsFactura order by 1 desc");
+					ResultSet rs =  s.executeQuery();
+					while(rs.next()){
+						return rs.getInt(1);
+					}
+		
+				}else{
+					return 1;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		return -1;
 	}
 	
 }

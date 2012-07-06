@@ -11,6 +11,16 @@ public class Factura {
 	private Date fecha;
 	private Cliente cliente;
 	private ArrayList<ItemFactura> Items;
+	private static int ultNroFactura = -1;
+	
+	public static void leerUltNroFactura(){
+		if(ultNroFactura == -1)
+			ultNroFactura = AdmPersistenciaFactura.getInstancia().getUltNumFactura();
+	}
+	public static int getProxNroFactura(){
+		ultNroFactura +=1;
+		return ultNroFactura;
+	}
 	
 	public Factura(Integer nrofact, Cliente cliente, ArrayList<Liquidador> liquidadores) {
 		this.nroFactura = nrofact;
