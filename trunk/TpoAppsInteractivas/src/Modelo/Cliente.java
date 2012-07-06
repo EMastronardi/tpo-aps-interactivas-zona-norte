@@ -94,11 +94,21 @@ public abstract class Cliente {
 		this.provincia = provincia;
 	}
 	public boolean cargarMedicion(float valor, Date fecha){
-		if(this.mediciones.add(new Medicion(fecha, valor)))
-			return true;
-		else
-			return false;
+	  Medicion med = new Medicion(fecha, valor);
+	  if(this.mediciones.add(med)){
+	   AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+	   adm.altaMedicion(med, this.nroCliente);
+	   return true;
+	  }else{
+	   return false;
+	  }
 	}
+	public boolean cargarMedicionesIniciales(float valor, Date fecha){
+		  if(this.mediciones.add(new Medicion(fecha, valor)))
+		   return true;
+		  else
+		   return false;
+		 }
 	public  String getIsA(){
 		return this.isA;
 	}
@@ -109,13 +119,14 @@ public abstract class Cliente {
 		return  consumo;
 	}
 	public void Delete(){
-		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
-		adm.delete(this);
-	}
-	public static void AltaCliente(Object obj){
+		  AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+		  adm.delete(this);
+	 }
+		 
+		 public static void AltaCliente(Object obj){
 		  AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
 		  adm.altaCliente(obj);
-	}
+		 }
 	public static void modificarCliente(Object obj){
 		AdmPersistenciaCliente.getInstancia().modificarCliente(obj);
 	}
