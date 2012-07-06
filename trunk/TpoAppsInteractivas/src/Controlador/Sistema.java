@@ -313,22 +313,16 @@ public class Sistema {
 	}
 	
 	public boolean facturar(){
-		Integer nroFactura = 0;
+		
 		for (Cliente cli : clientes) {
 			try {
-				//Integer nroFactura = facturas.get(facturas.size()-1).getNroFactura();
-				//if(nroFactura==null){
-					//nroFactura = 1;
-				//}
-				Factura fact = new Factura(nroFactura+1,cli,liquidadores);
+				Factura fact = new Factura(Factura.getProxNroFactura(),cli,liquidadores);
 				facturas.add(fact);
 			} catch (Exception e) {
 				return false;
 			}
-		
 		}
 		return true;
-		
 	}
 	
 	public ArrayList<ResidencialView> obtenerClientesResidencial(){
