@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.ArrayList;
+
 import Persistencia.AdmPersistenciaElementoCobrable;
 
 public class ElementoCobrable {
@@ -40,5 +42,8 @@ public class ElementoCobrable {
 	}
 	public void updateElementoCobrable(){
 		AdmPersistenciaElementoCobrable.getInstancia().update(this);
+	}
+	public static ArrayList<ElementoCobrable> getAllElementosCobrables(){
+		return AdmPersistenciaElementoCobrable.getInstancia().selectAll();
 	}
 }
