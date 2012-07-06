@@ -1,5 +1,5 @@
 package Modelo;
-
+import Persistencia.AdmPersistenciaCliente;
 
 public class Residencial extends Cliente{
 	private String nombre;
@@ -13,7 +13,8 @@ public class Residencial extends Cliente{
 		this.nombre = nombre;
 		this.apellido = apellido;
 		super.setIsA("residencial");
-		
+		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+		adm.altaCliente(this);
 	}
 	public String getNombre() {
 		return nombre;

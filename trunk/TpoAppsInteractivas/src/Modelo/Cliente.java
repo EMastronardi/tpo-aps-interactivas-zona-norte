@@ -3,7 +3,7 @@ package Modelo;
 import java.util.*;
 
 import Modelo.Medicion;
-
+import Persistencia.AdmPersistenciaCliente;
 public abstract class Cliente {
 	
 	protected Integer nroCliente;
@@ -22,7 +22,7 @@ public abstract class Cliente {
 	public void setIsA(String isA) {
 		this.isA = isA;
 	}
-
+	
 	public Cliente(String calle, Integer altura,
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia) {
@@ -36,7 +36,10 @@ public abstract class Cliente {
 		this.mediciones = new ArrayList<Medicion>();
 		this.nroCliente = this.generarIdCliente();
 	}
-	
+	public static ArrayList<Cliente> getAllClients(){
+		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+		return adm.SelectAll();
+	}
 	private static int generarIdCliente(){
 		nroProximoCliente +=1;
 		return nroProximoCliente;
@@ -105,5 +108,8 @@ public abstract class Cliente {
 		float consumo = ultima.getValor() - anterior.getValor();
 		return  consumo;
 	}
-	
+	public void Delete(){
+		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+		adm.delete(this);
+	}
 }
