@@ -1,0 +1,5 @@
+jdbc=jdbc:sqlserver://
+servidor=192.168.1.108:1433
+usuario=sistemaliquidaciongas
+password=sistemaliquidaciongas
+conexiones=3
