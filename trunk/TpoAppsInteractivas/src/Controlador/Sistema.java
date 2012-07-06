@@ -363,6 +363,7 @@ public class Sistema {
 		ElementoCobrable elem = buscarElementoCobrable(nroEC);
 		if(elem!=null){
 			elem.setValor(valor);
+			elem.updateElementoCobrable();
 			return true;
 		}
 		return false;
