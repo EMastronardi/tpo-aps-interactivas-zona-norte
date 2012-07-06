@@ -2,6 +2,7 @@ package Modelo;
 
 import java.util.*;
 import Modelo.Medicion;
+import Persistencia.AdmPersistenciaCliente;
 
 public class Industrial extends Cliente{
 	private String razonSocial;
@@ -20,8 +21,9 @@ public class Industrial extends Cliente{
 		this.ingresosBrutos = ingresosBrutos;
 		Categoria = categoria;
 		super.setIsA("industrial");
+		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+		adm.altaCliente(this);
 	}
-	
 	public String getRazonSocial() {
 		return razonSocial;
 	}
