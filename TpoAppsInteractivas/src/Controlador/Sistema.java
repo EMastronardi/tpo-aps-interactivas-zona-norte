@@ -15,6 +15,7 @@ import Modelo.LiqResidencialConSubsidio;
 import Modelo.LiqResidencialSinSubsidio;
 import Modelo.Residencial;
 import Modelo.Liquidador;
+import Persistencia.AdmPersistenciaElementoCobrable;
 
 
 public class Sistema {
@@ -26,7 +27,7 @@ public class Sistema {
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
-		cobrables = new ArrayList<ElementoCobrable>();
+		cobrables = AdmPersistenciaElementoCobrable.getInstancia().selectAll();
 		liquidadores = new ArrayList<Liquidador>();
 		facturas = new ArrayList<Factura>();
 		this.cargarDatosIniciales();
@@ -35,22 +36,9 @@ public class Sistema {
 	
 	private void cargarDatosIniciales() {
 		
-		this.generarElementosCobrables();
 		this.generarLiquidadores();
 		this.generarClientes();
 		
-	}
-
-	
-	private void generarElementosCobrables() {
-		//elementos cobrables iniciales
-		cobrables.add(new ElementoCobrable(1,"IVA Consumidor final", (float) 0.21));
-		cobrables.add(new ElementoCobrable(2,"IVA Resp. Inscripto", (float) 0.21));
-		cobrables.add(new ElementoCobrable(3,"Contribuciones Municipales", (float) 0.05));
-		cobrables.add(new ElementoCobrable(4,"Ingresos Brutos", (float) 0.03));
-		cobrables.add(new ElementoCobrable(5,"Transporte", (float) 0.03));
-		cobrables.add(new ElementoCobrable(6,"Subsidio", (float) 0.05));
-
 	}
 	
 	private void generarClientes(){

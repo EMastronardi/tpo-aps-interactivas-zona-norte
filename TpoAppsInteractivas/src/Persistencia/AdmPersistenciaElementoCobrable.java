@@ -50,7 +50,6 @@ public class AdmPersistenciaElementoCobrable {
 	{
 		try
 		{
-			
 			ArrayList<ElementoCobrable> ec = new ArrayList<ElementoCobrable>();
 			Connection c = PoolConnection.getPoolConnection().getConnection();
 			Statement s = c.createStatement();

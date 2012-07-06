@@ -1,6 +1,5 @@
 package Modelo;
 
-
 public class ElementoCobrable {
 	private int nroElementoCobrable;
 	private String nombre;
@@ -37,5 +36,4 @@ public class ElementoCobrable {
 		return new ElementoCobrableView(nroElementoCobrable ,nombre, valor);
 		
 	}
-
 }
