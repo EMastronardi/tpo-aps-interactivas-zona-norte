@@ -1,10 +1,14 @@
 package Persistencia;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
+import Modelo.ElementoCobrable;
 import Modelo.ItemFactura;
 
 public class AdmPersistenciaItemFactura {
@@ -68,6 +72,31 @@ public class AdmPersistenciaItemFactura {
 			System.err.println(e);
 		}
 		return -1;
+	}
+	
+	public ArrayList<ItemFactura> selectAll(Integer nroFactura){
+		try
+		{
+			ArrayList<ItemFactura> itms = new ArrayList<ItemFactura>();
+			Connection c = PoolConnection.getPoolConnection().getConnection();
+			Statement s = c.createStatement();
+			ResultSet result = s.executeQuery("Select * from ItemsFactura WHERE nroFactura ="+nroFactura);
+			while (result.next())
+			{
+				String nombre = result.getString(2);
+				float valor = result.getFloat(3);
+				ItemFactura aux = new ItemFactura(nombre,valor);
+				itms.add(aux);
+				
+			}
+			PoolConnection.getPoolConnection().realeaseConnection(c);
+			return itms;
+		}
+		catch(Exception e)
+		{
+			System.err.println(e);
+		}
+		return null;
 	}
 	
 }
