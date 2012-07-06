@@ -1,5 +1,7 @@
 package Modelo;
 
+import Persistencia.AdmPersistenciaElementoCobrable;
+
 public class ElementoCobrable {
 	private int nroElementoCobrable;
 	private String nombre;
@@ -35,5 +37,8 @@ public class ElementoCobrable {
 	public ElementoCobrableView generarElementoCobrableView(){
 		return new ElementoCobrableView(nroElementoCobrable ,nombre, valor);
 		
+	}
+	public void updateElementoCobrable(){
+		AdmPersistenciaElementoCobrable.getInstancia().update(this);
 	}
 }
