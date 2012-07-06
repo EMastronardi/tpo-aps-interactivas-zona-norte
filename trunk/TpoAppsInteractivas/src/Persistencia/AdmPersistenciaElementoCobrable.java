@@ -31,12 +31,7 @@ public class AdmPersistenciaElementoCobrable {
 		{
 			ElementoCobrable ec = (ElementoCobrable)o;
 			Connection con = PoolConnection.getPoolConnection().getConnection();
-			PreparedStatement s = con.prepareStatement("update ElementosCobrables " +
-					"set valor ='" + "?" + "'" +
-					" where nroElementoCobrable =?");
-			//agregar campos
-			s.setFloat(1, ec.getValor());
-			s.setInt(2, ec.getNroElementoCobrable());
+			PreparedStatement s = con.prepareStatement("UPDATE ElementosCobrables SET valor ='"+ec.getValor()+"' WHERE nroElementoCobrable = " + ec.getNroElementoCobrable());
 			s.executeUpdate();
 			PoolConnection.getPoolConnection().realeaseConnection(con);
 		}
