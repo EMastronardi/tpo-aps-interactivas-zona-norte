@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Persistencia.AdmPersistenciaElementoCobrable;
 
 public class ElementoCobrable {
-	private int nroElementoCobrable;
+	private Integer nroElementoCobrable;
 	private String nombre;
 	private float valor;
 
@@ -16,7 +16,7 @@ public class ElementoCobrable {
 		this.valor = valor;
 	}
 	
-	public int getNroElementoCobrable() {
+	public Integer getNroElementoCobrable() {
 		return nroElementoCobrable;
 	}
 
