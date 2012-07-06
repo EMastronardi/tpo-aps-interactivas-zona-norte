@@ -2,6 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 import Modelo.ItemFactura;
+import Persistencia.AdmPersistenciaItemFactura;
 
 public final class LiqIndustrialConTransporte extends LiquidadorIndustrial {
 
@@ -25,4 +26,5 @@ public final class LiqIndustrialConTransporte extends LiquidadorIndustrial {
 		}
 		return null;
 	}
+
 }
