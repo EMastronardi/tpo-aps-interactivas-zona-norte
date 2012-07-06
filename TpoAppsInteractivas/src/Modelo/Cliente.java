@@ -16,7 +16,7 @@ public abstract class Cliente {
 	protected String provincia;
 	private ArrayList<Medicion> mediciones;
 	protected String isA;
-	private static int nroProximoCliente = 0;
+	private static int nroProximoCliente = 1;
 	
 	
 	public void setIsA(String isA) {
@@ -111,5 +111,12 @@ public abstract class Cliente {
 	public void Delete(){
 		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
 		adm.delete(this);
+	}
+	public static void AltaCliente(Object obj){
+		  AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
+		  adm.altaCliente(obj);
+	}
+	public static void modificarCliente(Object obj){
+		AdmPersistenciaCliente.getInstancia().modificarCliente(obj);
 	}
 }

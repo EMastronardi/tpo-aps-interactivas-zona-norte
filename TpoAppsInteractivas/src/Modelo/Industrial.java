@@ -14,6 +14,7 @@ public class Industrial extends Cliente{
 			Integer piso, String departamento, String codigoPostal,
 			String localidad, String provincia, String razonSocial,
 			String cuit, String ingresosBrutos, String categoria) {
+				
 		super(calle, altura, piso, departamento, codigoPostal,
 				localidad, provincia);
 		this.razonSocial = razonSocial;
@@ -22,7 +23,6 @@ public class Industrial extends Cliente{
 		Categoria = categoria;
 		super.setIsA("industrial");
 		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
-		adm.altaCliente(this);
 	}
 	public String getRazonSocial() {
 		return razonSocial;

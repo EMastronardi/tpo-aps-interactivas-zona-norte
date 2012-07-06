@@ -27,6 +27,7 @@ public class Sistema {
 	
 	private Sistema() {
 		clientes = new ArrayList<Cliente>();
+		clientes= Cliente.getAllClients();
 		cobrables = AdmPersistenciaElementoCobrable.getInstancia().selectAll();
 		liquidadores = new ArrayList<Liquidador>();
 		facturas = new ArrayList<Factura>();
@@ -37,7 +38,7 @@ public class Sistema {
 	private void cargarDatosIniciales() {
 		
 		this.generarLiquidadores();
-		this.generarClientes();
+		//this.generarClientes();
 		
 	}
 	
@@ -222,6 +223,7 @@ public class Sistema {
 		if(this.getCliente(null, calle, altura, piso, departamento, codigoPostal, localidad, provincia)==null){
 			Cliente aux = new Residencial(calle, altura,piso, departamento, codigoPostal, localidad, provincia, nombre, apellido);
 			clientes.add(aux);
+			Cliente.AltaCliente(aux);
 			return true;
 		}
 		return false;
@@ -234,7 +236,9 @@ public class Sistema {
 			
 		Cliente cliente = this.getCliente(nroCliente, calle, altura, piso, departamento, codigoPostal, localidad, provincia);
 		if(cliente != null){
+			cliente.Delete();
 			clientes.remove(cliente);
+
 			return true;
 		}
 		return false;
@@ -256,7 +260,7 @@ public class Sistema {
 			cliente.setProvincia(provincia);
 			cliente.setNombre(nombre);
 			cliente.setApellido(apellido);
-			
+			Cliente.modificarCliente(cliente);
 			return true;
 		}
 		return false;
@@ -306,7 +310,7 @@ public class Sistema {
 			cliente.setCuit(cuit);
 			cliente.setRazonSocial(razonSocial);
 			cliente.setIngresosBrutos(ingresosBrutos);
-			
+			Cliente.modificarCliente(cliente);
 			return true;
 		}
 		return false;

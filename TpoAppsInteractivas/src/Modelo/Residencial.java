@@ -14,7 +14,6 @@ public class Residencial extends Cliente{
 		this.apellido = apellido;
 		super.setIsA("residencial");
 		AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
-		adm.altaCliente(this);
 	}
 	public String getNombre() {
 		return nombre;
