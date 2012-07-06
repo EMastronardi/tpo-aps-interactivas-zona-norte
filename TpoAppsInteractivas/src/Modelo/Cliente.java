@@ -4,6 +4,7 @@ import java.util.*;
 
 import Modelo.Medicion;
 import Persistencia.AdmPersistenciaCliente;
+
 public abstract class Cliente {
 	
 	protected Integer nroCliente;
@@ -109,7 +110,7 @@ public abstract class Cliente {
 		  else
 		   return false;
 		 }
-	public  String getIsA(){
+	public String getIsA(){
 		return this.isA;
 	}
 	public float obtenerUltimoConsumo(){
@@ -121,12 +122,11 @@ public abstract class Cliente {
 	public void Delete(){
 		  AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
 		  adm.delete(this);
-	 }
-		 
-		 public static void AltaCliente(Object obj){
+	 }	 
+	public static void AltaCliente(Object obj){
 		  AdmPersistenciaCliente adm = AdmPersistenciaCliente.getInstancia();
 		  adm.altaCliente(obj);
-		 }
+	}
 	public static void modificarCliente(Object obj){
 		AdmPersistenciaCliente.getInstancia().modificarCliente(obj);
 	}
