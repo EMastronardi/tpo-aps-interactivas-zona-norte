@@ -37,7 +37,7 @@ public class AdmPersistenciaElementoCobrable {
 			//agregar campos
 			s.setFloat(1, ec.getValor());
 			s.setInt(2, ec.getNroElementoCobrable());
-			s.execute();
+			s.executeUpdate();
 			PoolConnection.getPoolConnection().realeaseConnection(con);
 		}
 		catch (Exception e)

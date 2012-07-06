@@ -234,7 +234,6 @@ public class AdmPersistenciaCliente {
 		   Connection con = PoolConnection.getPoolConnection().getConnection();
 		   PreparedStatement s = con.prepareStatement("INSERT INTO Mediciones (fecha, valor, nroCliente) values (?,?,?)");
 		   java.sql.Date sqlDate = new java.sql.Date(c.getFecha().getTime()); 
-
 		   s.setDate(1, (Date) sqlDate);
 		   s.setFloat(2, c.getValor());
 		   s.setInt(3, nroCliente);
