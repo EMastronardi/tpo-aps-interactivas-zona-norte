@@ -62,7 +62,7 @@ public class AdmPersistenciaCliente {
 		        clientes.add(industrial);
 		      }
 		      rs.close();
-		      SQL = "Select * FROM Clientes as A , Recidencial as B WHERE B.nroCliente = A.nroCliente";
+		      SQL = "Select * FROM Clientes as A , Residencial as B WHERE B.nroCliente = A.nroCliente";
 		   pstmt = con.prepareStatement(SQL);
 		      rs = pstmt.executeQuery();
 		      while (rs.next()) {
@@ -156,8 +156,8 @@ public class AdmPersistenciaCliente {
 	    s2.execute();
 	    PoolConnection.getPoolConnection().realeaseConnection(con);
 	   }else{
-	    System.out.print("Recidencial");
-	    PreparedStatement s3 = con.prepareStatement("DELETE FROM Recidencial WHERE nroCliente = ?");
+	    System.out.print("Residencial");
+	    PreparedStatement s3 = con.prepareStatement("DELETE FROM Residencial WHERE nroCliente = ?");
 	    s3.setInt(1, c.getNroCliente());
 	    s3.execute();
 	    PoolConnection.getPoolConnection().realeaseConnection(con);
