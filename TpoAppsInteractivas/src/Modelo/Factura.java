@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.*;
+
 import Modelo.Cliente;
 import Modelo.ItemFactura;
 import Persistencia.AdmPersistenciaFactura;
@@ -29,6 +30,14 @@ public class Factura {
 		this.cliente = cliente;
 		this.Items = this.generarFactura(this.cliente, liquidadores);
 		AdmPersistenciaFactura.getInstancia().insert(this);
+	}
+	
+	public Factura(Integer nroFactura, float metrosCubicosConsumidos,
+			Date fecha, ArrayList<ItemFactura> items) {
+		this.nroFactura = nroFactura;
+		this.metrosCubicosConsumidos = metrosCubicosConsumidos;
+		this.fecha = fecha;
+		Items = items;
 	}
 	
 	public Integer getNroFactura() {
@@ -83,6 +92,9 @@ public class Factura {
 			total = total + itm.getValor();
 		}
 		return total;
+	}
+	public static ArrayList<Factura> getAllFacturas(){
+		return AdmPersistenciaFactura.getInstancia().selectAll();
 	}
 }
 

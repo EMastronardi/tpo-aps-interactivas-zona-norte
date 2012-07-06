@@ -31,6 +31,7 @@ public class Sistema {
 		cobrables = ElementoCobrable.getAllElementosCobrables();
 		liquidadores = new ArrayList<Liquidador>();
 		facturas = new ArrayList<Factura>();
+		facturas = Factura.getAllFacturas();
 		this.cargarDatosIniciales();	
 	}
 	

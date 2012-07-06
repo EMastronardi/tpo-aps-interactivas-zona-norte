@@ -5,8 +5,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import Modelo.ElementoCobrable;
 import Modelo.Factura;
 import Modelo.ItemFactura;
 import Persistencia.AdmPersistenciaItemFactura;
@@ -78,8 +80,32 @@ public class AdmPersistenciaFactura {
 		{
 			System.err.println(e);
 		}
-		
-
+	}
+	
+	public ArrayList<Factura> selectAll(){
+		try
+		{
+			ArrayList<Factura> f = new ArrayList<Factura>();
+			Connection c = PoolConnection.getPoolConnection().getConnection();
+			Statement s = c.createStatement();
+			ResultSet result = s.executeQuery("Select * from Facturas");
+			while (result.next())
+			{
+				int nroFactura = result.getInt(1);
+				float mcubicos = result.getFloat(2);
+				Date fecha = result.getDate(3);
+				ArrayList<ItemFactura> it = AdmPersistenciaItemFactura.getInstancia().selectAll(nroFactura);
+				Factura aux = new Factura(nroFactura,mcubicos,fecha,it);
+				f.add(aux);
+			}
+			PoolConnection.getPoolConnection().realeaseConnection(c);
+			return f;
+		}
+		catch(Exception e)
+		{
+			System.err.println(e);
+		}
+		return null;
 	}
 	
 }
